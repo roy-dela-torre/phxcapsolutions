@@ -1,0 +1,428 @@
+/* =============================================
+   SINGLE SERVICE PAGE — single_services.css
+   Dark theme: rgb(27,28,29) + gold #c59b32
+   ============================================= */
+
+body {
+    background: rgb(27, 28, 29) !important;
+}
+
+section {
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -200px;
+        right: -100px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(ellipse, rgba(197, 155, 50, 0.07) 0%, transparent 70%);
+        pointer-events: none;
+    }
+}
+
+/* =============================================
+   HERO
+   ============================================= */
+section.ss_hero {
+    background-color: rgb(27, 28, 29);
+
+    .ss_breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 28px;
+        flex-wrap: wrap;
+
+        a {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            display: inline;
+            width: auto;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: #c59b32;
+            }
+        }
+
+        .bc_sep {
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 0.8rem;
+        }
+
+        span:last-child {
+            font-size: 0.8rem;
+            color: #c59b32;
+        }
+    }
+
+    .ss_label {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #c59b32;
+        margin-bottom: 16px;
+        padding: 6px 14px;
+        border: 1px solid rgba(197, 155, 50, 0.3);
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        background: rgba(197, 155, 50, 0.06);
+    }
+
+    h1 {
+        font-family: 'Gilroy', sans-serif;
+        font-weight: 800;
+        font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+        color: #ffffff;
+        line-height: 1.15;
+        margin-bottom: 20px;
+    }
+
+    .ss_intro {
+        p {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.95rem;
+            line-height: 1.75;
+            margin-bottom: 14px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        a {
+            color: #c59b32;
+            text-decoration: underline;
+            display: inline;
+            width: auto;
+        }
+    }
+
+    /* Checklist */
+    .ss_checklist {
+        border: 1px solid rgba(197, 155, 50, 0.2);
+        border-radius: 12px;
+        -webkit-border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .ss_check_item {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 20px 24px;
+        background: rgba(197, 155, 50, 0.05);
+        border-bottom: 1px solid rgba(197, 155, 50, 0.1);
+        transition: background-color 0.3s ease;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        &:hover {
+            background: rgba(197, 155, 50, 0.1);
+        }
+
+        svg {
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .check_title {
+            font-family: 'Gilroy', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .check_desc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+    }
+}
+
+/* =============================================
+   OFFERINGS SECTION
+   ============================================= */
+section.ss_offerings {
+    background-color: rgb(20, 20, 21);
+
+    .ss_section_label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #c59b32;
+        margin-bottom: 10px;
+    }
+
+    .ss_section_title {
+        font-family: 'Gilroy', sans-serif;
+        font-weight: 800;
+        font-size: clamp(1.5rem, 2.5vw, 2rem);
+        color: #ffffff;
+        line-height: 1.2;
+        margin-bottom: 40px;
+    }
+}
+
+/* =============================================
+   OFFERING CARD
+   ============================================= */
+.offering_card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    -webkit-border-radius: 16px;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #c59b32, transparent);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+    }
+
+    &:hover {
+        border-color: rgba(197, 155, 50, 0.4);
+        transform: translateY(-4px);
+    }
+
+    &:hover::before {
+        opacity: 1;
+    }
+
+    /* ---- Image ---- */
+    .offering_image {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        flex-shrink: 0;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+    }
+
+    &:hover .offering_image img {
+        transform: scale(1.05);
+    }
+
+    /* ---- Header: icon + title ---- */
+    .offering_header {
+        padding: 20px 24px 0;
+    }
+
+    .offering_title_row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .offering_icon {
+            width: 14px;
+            height: 14px;
+            background: #c59b32;
+            border-radius: 2px;
+            -webkit-border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        h3 {
+            font-family: 'Gilroy', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0;
+            line-height: 1.3;
+        }
+    }
+
+    /* ---- Accordion toggle button ---- */
+    .offering_toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        width: 100%;
+        padding: 12px 24px;
+        background: transparent;
+        border: none;
+        border-top: none;
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 0.82rem;
+        font-weight: 600;
+        font-family: 'Instrument Sans', sans-serif;
+        cursor: pointer;
+        text-align: left;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: #c59b32;
+        }
+
+        /* Toggle label swap via aria */
+        .toggle_label_hide {
+            display: none;
+        }
+
+        .toggle_label_show {
+            display: inline;
+        }
+
+        &[aria-expanded="true"] {
+            color: #c59b32;
+
+            .toggle_label_show {
+                display: none;
+            }
+
+            .toggle_label_hide {
+                display: inline;
+            }
+
+            .toggle_chevron {
+                transform: rotate(180deg);
+            }
+        }
+
+        .toggle_chevron {
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+            color: #c59b32;
+        }
+    }
+
+    /* ---- Accordion body ---- */
+    .offering_body {
+        padding: 0 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+        &.show {
+            padding-bottom: 4px;
+        }
+    }
+
+    .offering_desc {
+        padding: 16px 0 8px;
+
+        p {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.85rem;
+            line-height: 1.7;
+            margin-bottom: 8px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .offering_highlights,
+    .offering_facts {
+        padding: 12px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+        &:first-child {
+            border-top: none;
+            padding-top: 16px;
+        }
+
+        .list_label {
+            font-family: 'Gilroy', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #c59b32;
+            margin-bottom: 8px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            li {
+                color: rgba(255, 255, 255, 0.7);
+                font-size: 0.83rem;
+                line-height: 1.55;
+                padding-left: 14px;
+                position: relative;
+
+                &::before {
+                    content: '•';
+                    position: absolute;
+                    left: 0;
+                    color: #c59b32;
+                    font-size: 0.7rem;
+                    top: 1px;
+                }
+            }
+        }
+    }
+
+    /* ---- Apply Now button — always visible, flush bottom ---- */
+    .offering_apply_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        /* Break out of padding to be edge-to-edge */
+        width: calc(100% + 0px);
+        margin-top: auto;
+        padding: 14px 20px;
+        background-color: #c59b32;
+        color: #000000;
+        font-weight: 700;
+        font-size: 0.9rem;
+        font-family: 'Gilroy', sans-serif;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+
+        /* No border-radius — card overflow:hidden handles it */
+        &:hover {
+            background-color: #a07820;
+            color: #000000;
+        }
+    }
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 767px) {
+    .offering_card .offering_image {
+        height: 180px;
+    }
+
+    section.ss_hero .ss_checklist {
+        margin-top: 28px;
+    }
+}

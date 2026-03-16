@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('../css/header.css');
+@import url('../css/footer.css');
+
+body {
+    background: linear-gradient(0deg, #383838, #383838),
+        linear-gradient(180deg, #383838 0%, #000000 100%);
+    overflow-x: hidden;
+
+}
+
+section {
+    padding: 100px 30px;
+
+    @media (max-width: 1200px) {
+        padding: 70px 18px;
+    }
+
+    @media (max-width: 767px) {
+        padding: 50px 8px;
+    }
+}
+
+h1 {
+    font-family: 'Gilroy', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: clamp(2.1875rem, 1.0156rem + 3.75vw, 3.125rem);
+    line-height: 110%;
+    margin-bottom: 2rem;
+}
+
+p {
+    font-family: 'Instrument Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 110%;
+}
+
+p:last-of-type {
+    margin-bottom: 0;
+}
+
+h2 {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: clamp(1.875rem, 0.7031rem + 3.75vw, 2.8125rem);
+    line-height: 110%;
+    letter-spacing: 0%;
+    margin-bottom: 1.5rem;
+}
+
+.yellow_btn {
+    padding: 16px 18px;
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 100%;
+    color: #000000;
+    border: 1px solid #CDA03E;
+    background-color: #CDA03E;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+
+    &:hover {
+        transition: .5s ease all;
+        -webkit-transition: .5s ease all;
+        -moz-transition: .5s ease all;
+        -ms-transition: .5s ease all;
+        -o-transition: .5s ease all;
+        color: white;
+        background-color: transparent;
+    }
+}
+
+.transparent_btn {
+    padding: 16px 18px;
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 100%;
+    color: white;
+    border: 1px solid white;
+    background-color: transparent;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+
+    &:hover {
+        transition: .5s ease all;
+        -webkit-transition: .5s ease all;
+        -moz-transition: .5s ease all;
+        -ms-transition: .5s ease all;
+        -o-transition: .5s ease all;
+        color: black;
+        background-color: #CDA03E;
+        border-color: #CDA03E;
+    }
+}
+
+a {
+    text-decoration: none;
+    display: block;
+    width: fit-content;
+}
+
+
+.wrapper {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h3 {
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 100%;
+    margin-bottom: 1rem;
+}
+
+.header {
+    max-width: 900px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.row {
+    gap: 24px 0;
+}
+
+.text_gold,
+.text-gold {
+    color: #c59b32 !important;
+}
+
+.hero_btns {
+    .btn_gold {
+        display: inline-block;
+        padding: 14px 24px;
+        border-radius: 6px;
+        -webkit-border-radius: 6px;
+        border: 1px solid #c59b32;
+        background-color: transparent;
+        color: #c59b32;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.9rem;
+        transition: background-color 0.3s ease, color 0.3s ease;
+
+        &:hover {
+            background-color: #c59b32;
+            color: #000000;
+        }
+    }
+
+    .btn_outline {
+        display: inline-block;
+        padding: 14px 24px;
+        border-radius: 6px;
+        -webkit-border-radius: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background-color: transparent;
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: border-color 0.3s ease, color 0.3s ease;
+
+        &:hover {
+            border-color: rgba(255, 255, 255, 0.5);
+            color: #ffffff;
+        }
+    }
+}

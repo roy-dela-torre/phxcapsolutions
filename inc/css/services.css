@@ -1,0 +1,322 @@
+/* =============================================
+   SERVICES PAGE — services.css
+   Dark theme — rgb(27,28,29) + gold #c59b32
+   ============================================= */
+
+body { background: rgb(27, 28, 29) !important; }
+
+section {
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -200px;
+        right: -100px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(ellipse, rgba(197, 155, 50, 0.08) 0%, transparent 70%);
+        pointer-events: none;
+    }
+}
+
+/* =============================================
+   HERO
+   ============================================= */
+section.services_hero {
+    background-color: rgb(27, 28, 29);
+
+    .program_label {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #c59b32;
+        margin-bottom: 20px;
+        padding: 6px 14px;
+        border: 1px solid rgba(197, 155, 50, 0.3);
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        background: rgba(197, 155, 50, 0.06);
+    }
+
+    h1 {
+        font-family: 'Gilroy', sans-serif;
+        font-weight: 800;
+        font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+        color: #ffffff;
+        line-height: 1.15;
+        margin: 0;
+    }
+
+    .hero_desc {
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 1rem;
+        line-height: 1.75;
+        margin: 0;
+        padding-top: 8px;
+    }
+}
+
+/* =============================================
+   SERVICE CARDS
+   ============================================= */
+section.services_cards {
+    background-color: rgb(20, 20, 21);
+}
+
+.service_card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    -webkit-border-radius: 16px;
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+
+    /* Gold top line on hover */
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #c59b32, transparent);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+    }
+
+    &:hover {
+        border-color: rgba(197, 155, 50, 0.4);
+        transform: translateY(-5px);
+    }
+
+    &:hover::before { opacity: 1; }
+
+    .service_image {
+        width: 100%;
+        height: 260px;
+        overflow: hidden;
+        flex-shrink: 0;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+    }
+
+    &:hover .service_image img { transform: scale(1.05); }
+
+    .service_content {
+        padding: 28px 28px 24px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        h3 {
+            font-family: 'Gilroy', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            text-align: center;
+            margin-bottom: 0;
+            flex: 1;
+        }
+    }
+
+    .service_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: calc(100% + 56px);
+        margin-left: -28px;
+        margin-right: -28px;
+        margin-top: 24px;
+        margin-bottom: -24px;
+        padding: 16px 20px;
+        background-color: #c59b32;
+        color: #000000;
+        font-weight: 700;
+        font-size: 0.9rem;
+        font-family: 'Gilroy', sans-serif;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+
+        &:hover { background-color: #a07820; color: #000000; }
+    }
+}
+
+/* =============================================
+   CTA BANNER
+   ============================================= */
+section.services_cta_banner {
+    position: relative;
+    overflow: hidden;
+    min-height: 380px;
+    display: flex;
+    align-items: center;
+    padding: 80px 30px !important;
+
+    &::before { display: none; }
+
+    @media (max-width: 1200px) { padding: 60px 18px !important; }
+    @media (max-width: 767px)  { padding: 50px 8px !important; }
+
+    .cta_image_wrap {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+
+        img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        .cta_overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg,
+                rgba(10, 10, 10, 0.88) 0%,
+                rgba(10, 10, 10, 0.72) 55%,
+                rgba(10, 10, 10, 0.45) 100%);
+        }
+    }
+
+    .wrapper {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+    }
+
+    .cta_content { max-width: 600px; }
+
+    .cta_tags {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+
+    .cta_tag_pill {
+        display: inline-block;
+        padding: 5px 14px;
+        background: #c59b32;
+        color: #000000;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        font-family: 'Instrument Sans', sans-serif;
+    }
+
+    .cta_tag_text {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.6);
+        font-family: 'Instrument Sans', sans-serif;
+    }
+
+    h2 {
+        font-family: 'Gilroy', sans-serif;
+        font-weight: 800;
+        font-size: clamp(1.6rem, 3vw, 2.4rem);
+        color: #ffffff;
+        line-height: 1.2;
+        margin-bottom: 16px;
+    }
+
+    p {
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 28px;
+    }
+
+    .cta_btn {
+        display: inline-block;
+        padding: 14px 32px;
+        background: #c59b32;
+        color: #000000;
+        font-weight: 700;
+        font-size: 0.95rem;
+        font-family: 'Gilroy', sans-serif;
+        border-radius: 30px;
+        -webkit-border-radius: 30px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        width: auto;
+
+        &:hover { background-color: #a07820; transform: translateY(-2px); }
+    }
+}
+
+/* =============================================
+   THREE COLUMNS
+   ============================================= */
+section.services_three_col {
+    background-color: rgb(23, 22, 20);
+
+    .three_col_item {
+        padding: 20px 16px 28px;
+        border-bottom: 1px solid rgba(197, 155, 50, 0.2);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: border-color 0.3s ease;
+
+        &:hover { border-color: rgba(197, 155, 50, 0.5); }
+
+        h3 {
+            font-family: 'Gilroy', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.88rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+    }
+
+    .three_col_link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.75);
+        text-decoration: none;
+        font-family: 'Gilroy', sans-serif;
+        border-bottom: 1.5px solid rgba(255, 255, 255, 0.3);
+        padding-bottom: 2px;
+        width: auto;
+        transition: color 0.3s ease, border-color 0.3s ease;
+
+        &:hover {
+            color: #c59b32;
+            border-color: #c59b32;
+        }
+    }
+}

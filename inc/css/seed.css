@@ -1,0 +1,451 @@
+/* =============================================
+   S.E.E.D. PAGE — seed.css
+   ============================================= */
+
+body { background: rgb(27, 28, 29) !important; }
+
+section {
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -200px;
+        right: -100px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(ellipse, rgba(197, 155, 50, 0.08) 0%, transparent 70%);
+        pointer-events: none;
+    }
+}
+
+/* =============================================
+   HERO — gold background like original
+   ============================================= */
+section.seed_hero {
+    background-color: #c59b32;
+
+    /* Override glow — not needed on gold bg */
+    &::before { display: none; }
+
+    .program_label {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #ffffff;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        font-family: 'Gilroy', sans-serif;
+        font-weight: 800;
+        line-height: 1.1;
+        color: #ffffff;
+    }
+
+    p { color: rgba(255, 255, 255, 0.85); line-height: 1.75; }
+
+    .hero_btns { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 8px; }
+
+    .btn_dark {
+        display: inline-block;
+        padding: 14px 24px;
+        border-radius: 0;
+        border: none;
+        background: #ffffff;
+        color: #000000;
+        font-weight: 700;
+        font-size: 0.9rem;
+        font-family: 'Gilroy', sans-serif;
+        text-decoration: none;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        width: auto;
+
+        &:hover { background-color: #111111; color: #ffffff; }
+    }
+
+    .hero_image {
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 8px 32px rgba(0,0,0,0.25));
+        }
+    }
+
+    @media (max-width: 767px) {
+        .hero_btns { flex-direction: column; align-items: flex-start; }
+    }
+}
+
+/* =============================================
+   OVERVIEW — dark, parallax bg
+   ============================================= */
+section.seed_overview {
+    background: linear-gradient(rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.66) 100%),
+        url('../../assets/img/seed/seed-bg.jpg') no-repeat center center / cover;
+    background-attachment: fixed;
+
+    .overview_content {
+        h2 { font-family: 'Gilroy', sans-serif; font-weight: 800; }
+        p { color: rgba(255,255,255,0.8); line-height: 1.75; }
+    }
+
+    .overview_image {
+        img { width: 100%; height: auto; display: block; filter: drop-shadow(0 0 30px rgba(197,155,50,0.2)); }
+    }
+}
+
+/* =============================================
+   PROGRAM MECHANICS
+   ============================================= */
+section.seed_mechanics {
+    background-color: rgb(27, 28, 29);
+
+    h2 { font-family: 'Gilroy', sans-serif; font-weight: 800; color: #ffffff; }
+
+    .mechanic_card {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 16px; -webkit-border-radius: 16px;
+        padding: 32px 28px; height: 100%;
+        position: relative; overflow: hidden;
+        transition: border-color 0.3s ease, transform 0.3s ease;
+
+        &::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, transparent, #c59b32, transparent);
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+
+        &:hover { border-color: rgba(197,155,50,0.35); transform: translateY(-4px); }
+        &:hover::before { opacity: 1; }
+
+        .mechanic_icon {
+            width: 52px; height: 52px;
+            border-radius: 12px; -webkit-border-radius: 12px;
+            background: rgba(197,155,50,0.1); border: 1px solid rgba(197,155,50,0.25);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        h3 { font-family: 'Gilroy', sans-serif; font-size: 1rem; font-weight: 700; }
+        p { color: rgba(255,255,255,0.65); font-size: 0.88rem; line-height: 1.7; margin: 0; }
+    }
+}
+
+/* =============================================
+   TIMELINE — dark parallax + flip cards (col-lg-4, 6 cards)
+   ============================================= */
+section.seed_timeline {
+    background: linear-gradient(rgba(10,10,10,0.84) 0%, rgba(10,10,10,0.88) 100%),
+        url('../../assets/img/seed/seed-timeline-bg.jpg') no-repeat center center / cover;
+    background-attachment: fixed;
+
+    h2 { font-family: 'Gilroy', sans-serif; font-weight: 800; color: #ffffff; }
+
+    .timeline_note {
+        color: rgba(255,255,255,0.55); font-size: 0.9rem; max-width: 600px; line-height: 1.65;
+    }
+
+    .flip_card {
+        perspective: 1000px; height: 220px; cursor: pointer;
+
+        .flip_card_inner {
+            position: relative; width: 100%; height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.65s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        &:hover .flip_card_inner { transform: rotateY(180deg); }
+
+        .flip_card_front, .flip_card_back {
+            position: absolute; inset: 0;
+            backface-visibility: hidden; -webkit-backface-visibility: hidden;
+            border-radius: 12px; -webkit-border-radius: 12px;
+            padding: 28px 24px; display: flex; flex-direction: column;
+            justify-content: flex-end; overflow: hidden;
+        }
+
+        .flip_card_front {
+            background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+
+            .phase_tag {
+                font-size: 0.65rem; font-weight: 700; letter-spacing: 2px;
+                text-transform: uppercase; color: #c59b32; margin-bottom: 8px;
+            }
+
+            h3 { font-family: 'Gilroy', sans-serif; font-size: 1rem; font-weight: 700; color: #fff; line-height: 1.3; margin: 0; }
+        }
+
+        .flip_card_back {
+            background: rgba(10,10,10,0.97); border: 1px solid rgba(197,155,50,0.35);
+            transform: rotateY(180deg); justify-content: flex-start;
+
+            &::before {
+                content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+                background: linear-gradient(90deg, transparent, #c59b32, transparent);
+            }
+
+            .phase_tag {
+                font-size: 0.65rem; font-weight: 700; letter-spacing: 2px;
+                text-transform: uppercase; color: #c59b32; margin-bottom: 12px;
+            }
+
+            .phase_list {
+                list-style: none; padding: 0; margin: 0;
+                display: flex; flex-direction: column; gap: 8px;
+
+                li {
+                    color: rgba(255,255,255,0.75); font-size: 0.82rem; line-height: 1.55;
+                    padding-left: 14px; position: relative;
+
+                    &::before {
+                        content: ''; position: absolute; left: 0; top: 7px;
+                        width: 4px; height: 4px; border-radius: 50%; background: #c59b32;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: 991px) { .flip_card { height: auto; min-height: 200px; } }
+}
+
+/* =============================================
+   FINANCIAL MODEL — dark, centered table
+   ============================================= */
+section.seed_financial_model {
+    background-color: rgb(18, 18, 19);
+
+    h2 { font-family: 'Gilroy', sans-serif; font-weight: 800; color: #ffffff; }
+
+    .model_note {
+        color: rgba(255,255,255,0.55); font-size: 0.9rem;
+        max-width: 680px; margin-left: auto; margin-right: auto; line-height: 1.65;
+    }
+
+    .financial_table {
+        border: 1px solid rgba(197,155,50,0.2);
+        border-radius: 16px; -webkit-border-radius: 16px;
+        overflow: hidden;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .ft_row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 18px 28px;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        transition: background-color 0.2s ease;
+
+        &:last-child { border-bottom: none; }
+
+        &:hover { background: rgba(197,155,50,0.04); }
+
+        &.highlight {
+            background: rgba(197,155,50,0.08);
+            border-top: 1px solid rgba(197,155,50,0.2);
+        }
+    }
+
+    .ft_label {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: rgba(255,255,255,0.55);
+        font-family: 'Instrument Sans', sans-serif;
+        flex-shrink: 0;
+    }
+
+    .ft_value {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #ffffff;
+        font-family: 'Gilroy', sans-serif;
+        text-align: right;
+
+        &.text-gold { color: #c59b32 !important; }
+    }
+
+    .model_disclaimer {
+        color: rgba(255,255,255,0.35);
+        font-size: 0.8rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.65;
+    }
+
+    @media (max-width: 767px) {
+        .ft_row { flex-direction: column; align-items: flex-start; gap: 6px; }
+        .ft_value { text-align: left; }
+    }
+}
+
+/* =============================================
+   ELIGIBILITY — gold background like original
+   ============================================= */
+section.seed_eligibility {
+    background-color: #c59b32;
+
+    &::before { display: none; }
+
+    h2 { font-family: 'Gilroy', sans-serif; font-weight: 800; color: #ffffff; }
+
+    .eligibility_intro { color: rgba(255,255,255,0.85); font-size: 0.95rem; }
+
+    .eligibility_card {
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 12px; -webkit-border-radius: 12px;
+        padding: 24px 20px; height: 100%;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+
+        &:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-4px);
+        }
+
+        .elig_icon {
+            width: 40px; height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 8px; -webkit-border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 14px;
+
+            svg { color: #ffffff; }
+        }
+
+        h3 {
+            font-family: 'Gilroy', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.3;
+        }
+
+        p { color: rgba(255,255,255,0.8); font-size: 0.85rem; line-height: 1.6; }
+    }
+
+    .btn_dark_solid {
+        display: inline-block;
+        padding: 14px 32px;
+        background: #000000;
+        color: #c59b32;
+        font-weight: 700;
+        font-size: 0.95rem;
+        font-family: 'Gilroy', sans-serif;
+        text-decoration: none;
+        border-radius: 0;
+        transition: background-color 0.3s ease;
+        width: auto;
+
+        &:hover { background: #1a1a1a; }
+    }
+}
+
+/* =============================================
+   USE CASES
+   ============================================= */
+section.seed_use_cases {
+    background-color: rgb(18, 18, 19);
+
+    .section_header h2 { font-family: 'Gilroy', sans-serif; font-weight: 800; }
+    .use_intro { color: rgba(255,255,255,0.5); font-size: 0.9rem; max-width: 560px; margin: 0 auto; }
+
+    .use_case_card {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 16px; -webkit-border-radius: 16px;
+        overflow: hidden; height: 100%;
+        transition: border-color 0.3s ease, transform 0.3s ease;
+        position: relative;
+
+        &::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, transparent, #c59b32, transparent);
+            opacity: 0; transition: opacity 0.3s ease; z-index: 1;
+        }
+
+        &:hover { border-color: rgba(197,155,50,0.35); transform: translateY(-4px); }
+        &:hover::before { opacity: 1; }
+
+        .use_case_image {
+            height: 220px; overflow: hidden;
+            img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+        }
+
+        &:hover .use_case_image img { transform: scale(1.05); }
+
+        .use_case_content {
+            padding: 24px;
+
+            .scenario_tag {
+                font-size: 0.7rem; font-weight: 700; letter-spacing: 2px;
+                text-transform: uppercase; color: #c59b32; margin-bottom: 10px;
+            }
+
+            p { color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.7; }
+        }
+    }
+}
+
+/* =============================================
+   FAQ
+   ============================================= */
+section.seed_faq {
+    background-color: rgb(17, 17, 17);
+
+    .section_header h2 { font-family: 'Gilroy', sans-serif; font-weight: 800; color: #ffffff; }
+
+    .faq_accordion { border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; }
+
+    .faq_item { border-bottom: 1px solid rgba(255,255,255,0.06); &:last-child { border-bottom: none; } }
+
+    .faq_question {
+        width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+        padding: 22px 28px; background: rgba(255,255,255,0.03); border: none;
+        color: rgba(255,255,255,0.85); font-size: 1rem; font-weight: 600;
+        text-align: left; cursor: pointer; font-family: inherit;
+        transition: color 0.3s ease, background-color 0.3s ease;
+
+        &:hover { color: #c59b32; background: rgba(197,155,50,0.04); }
+
+        &[aria-expanded="true"] { color: #c59b32; background: rgba(197,155,50,0.06);
+            .faq_icon { transform: rotate(180deg); }
+        }
+
+        .faq_icon { flex-shrink: 0; transition: transform 0.3s ease; }
+    }
+
+    .faq_answer {
+        padding: 0 28px 22px; background: rgba(197,155,50,0.03);
+        p { color: rgba(255,255,255,0.65); line-height: 1.75; margin: 0; }
+    }
+}
+
+/* =============================================
+   DISCLOSURE — gold background
+   ============================================= */
+section.seed_disclosure {
+    background-color: #c59b32;
+    padding: 48px 30px !important;
+
+    &::before { display: none; }
+
+    .disclosure_label {
+        font-size: 0.75rem; font-weight: 700; letter-spacing: 3px;
+        text-transform: uppercase; color: #ffffff; margin-bottom: 16px;
+    }
+
+    .disclosure_text {
+        color: rgba(255,255,255,0.8); font-size: 0.82rem; line-height: 1.7;
+        max-width: 800px; margin: 0 auto;
+    }
+}
