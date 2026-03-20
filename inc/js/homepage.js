@@ -1,5 +1,5 @@
 jQuery(function () {
-    const $bannerSection = jQuery(".banner");
+    const $bannerSection = jQuery("section.hp_hero");
     const $video = $bannerSection.find(".video-bg");
     const $source = $video.find("source");
     const videoUrl = window.location.origin + "/wp-content/themes/phxcapsolutions/assets/video/Banner-video.mp4";

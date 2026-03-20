@@ -6,7 +6,7 @@
                 <div class="row align-items-center footer_subscribe mb-0">
                     <div class="col-lg-5 mb-4 mb-lg-0">
                         <div class="footer_logo mb-4">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/global/logo.png" alt="Phoenix Capital Solutions" />
+                            <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/img/global/logo.png" alt="Phoenix Capital Solutions" title="Phoenix Capital Solutions" />
                         </div>
                         <h3 class="subscribe_heading mb-3">Stay Informed</h3>
                         <p class="subscribe_sub mb-0">Subscribe to receive updates from Phoenix Capital Solutions.</p>
@@ -130,9 +130,9 @@
                         <p class="copyright">© 2012–<?php echo date('Y'); ?> Phoenix Capital Solutions. All Rights Reserved.</p>
                     </div>
                     <div class="col-md-6 text-md-end">
-                        <a href="/privacy-policy/">Privacy Policy</a>
+                        <a href="<?= get_home_url(); ?>/privacy-policy/">Privacy Policy</a>
                         <span class="divider_dot">·</span>
-                        <a href="/terms/">Terms of Use</a>
+                        <a href="<?= get_home_url(); ?>/terms-and-condition/">Terms and Conditions</a>
                     </div>
                 </div>
             </div>

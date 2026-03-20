@@ -4,7 +4,7 @@ Template Name: SEED Page
 */
 
 get_header();
-$img_path = get_template_directory_uri() . '/assets/img/seed';
+$img_path = get_template_directory_uri() . '/assets/img/seed_program';
 ?>
 
 <!-- ========== HERO ========== -->
@@ -18,13 +18,20 @@ $img_path = get_template_directory_uri() . '/assets/img/seed';
                         <h1 class="text-white mb-4">Institutional-Grade Capital Formation for Qualified Investors</h1>
                         <p class="mb-4">A strategic program designed to transform controlled liquidity into large-scale banking instruments for monetization and long-term capital expansion.</p>
                         <div class="hero_btns">
-                            <a href="https://prod.phxcapsolutions.com/survey/start/9e98538f-95f5-470a-ab07-15bd5a3fb481" class="btn_dark" target="_blank" rel="noopener noreferrer">Request a Confidential Consultation</a>
+                            <a href="/disclosure/#seed" class="btn_outline">
+                                View Program Disclosure
+                            </a>
+
+                            <a href="https://prod.phxcapsolutions.com/survey/9e98538f-95f5-470a-ab07-15bd5a3fb481/3fee7818-91d9-4950-b002-519aec01549d"
+                                class="btn_dark" target="_blank">
+                                Request a Confidential Consultation
+                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-5">
                     <div class="hero_image">
-                        <img src="<?php echo $img_path; ?>/seed-hero.svg" alt="Institutional-Grade Capital Formation" />
+                        <img loading="lazy" src="<?php echo $img_path; ?>/seed-hero.svg" alt="Institutional-Grade Capital Formation" title="Institutional-Grade Capital Formation" />
                     </div>
                 </div>
             </div>
@@ -46,7 +53,7 @@ $img_path = get_template_directory_uri() . '/assets/img/seed';
                 </div>
                 <div class="col-lg-6">
                     <div class="overview_image">
-                        <img src="<?php echo $img_path; ?>/seed-overview.svg" alt="SEED Program Overview" />
+                        <img loading="lazy" src="<?php echo $img_path; ?>/seed-overview.svg" alt="SEED Program Overview" title="SEED Program Overview" />
                     </div>
                 </div>
             </div>
@@ -67,8 +74,8 @@ $img_path = get_template_directory_uri() . '/assets/img/seed';
                     <div class="mechanic_card">
                         <div class="mechanic_icon">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#c59b32" stroke-width="1.8" stroke-linejoin="round"/>
-                                <path d="M9 22V12h6v10" stroke="#c59b32" stroke-width="1.8" stroke-linecap="round"/>
+                                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#c59b32" stroke-width="1.8" stroke-linejoin="round" />
+                                <path d="M9 22V12h6v10" stroke="#c59b32" stroke-width="1.8" stroke-linecap="round" />
                             </svg>
                         </div>
                         <h3 class="text-white mb-2">Bank Instrument Issuance</h3>
@@ -80,9 +87,9 @@ $img_path = get_template_directory_uri() . '/assets/img/seed';
                     <div class="mechanic_card">
                         <div class="mechanic_icon">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="12" cy="12" r="9" stroke="#c59b32" stroke-width="1.8"/>
-                                <path d="M12 8v4l3 2" stroke="#c59b32" stroke-width="1.8" stroke-linecap="round"/>
-                                <path d="M9 3.5A9 9 0 0 0 3.5 9" stroke="#c59b32" stroke-width="1.8" stroke-linecap="round"/>
+                                <circle cx="12" cy="12" r="9" stroke="#c59b32" stroke-width="1.8" />
+                                <path d="M12 8v4l3 2" stroke="#c59b32" stroke-width="1.8" stroke-linecap="round" />
+                                <path d="M9 3.5A9 9 0 0 0 3.5 9" stroke="#c59b32" stroke-width="1.8" stroke-linecap="round" />
                             </svg>
                         </div>
                         <h3 class="text-white mb-2">Capital Entry Position</h3>
@@ -94,9 +101,9 @@ $img_path = get_template_directory_uri() . '/assets/img/seed';
                     <div class="mechanic_card">
                         <div class="mechanic_icon">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="#c59b32" stroke-width="1.8"/>
-                                <path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="#c59b32" stroke-width="1.8" stroke-linecap="round"/>
-                                <path d="M9 9h.01M15 9h.01" stroke="#c59b32" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="#c59b32" stroke-width="1.8" />
+                                <path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="#c59b32" stroke-width="1.8" stroke-linecap="round" />
+                                <path d="M9 9h.01M15 9h.01" stroke="#c59b32" stroke-width="2" stroke-linecap="round" />
                             </svg>
                         </div>
                         <h3 class="text-white mb-2">Monetization &amp; Credit Line Positioning</h3>
@@ -108,9 +115,9 @@ $img_path = get_template_directory_uri() . '/assets/img/seed';
                     <div class="mechanic_card">
                         <div class="mechanic_icon">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M23 4v6h-6" stroke="#c59b32" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M1 20v-6h6" stroke="#c59b32" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15" stroke="#c59b32" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M23 4v6h-6" stroke="#c59b32" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M1 20v-6h6" stroke="#c59b32" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15" stroke="#c59b32" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
                         <h3 class="text-white mb-2">Capital Expansion Through Trading Cycles</h3>
@@ -301,8 +308,8 @@ $img_path = get_template_directory_uri() . '/assets/img/seed';
                     <div class="eligibility_card">
                         <div class="elig_icon">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="currentColor" stroke-width="1.8"/>
-                                <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="currentColor" stroke-width="1.8" />
+                                <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
                             </svg>
                         </div>
                         <h3 class="mb-2">Minimum entry capital of $2.5M</h3>
@@ -314,9 +321,9 @@ $img_path = get_template_directory_uri() . '/assets/img/seed';
                     <div class="eligibility_card">
                         <div class="elig_icon">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="8" cy="8" r="5" stroke="currentColor" stroke-width="1.8"/>
-                                <path d="M20 20H14a6 6 0 00-6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                                <path d="M18 15l2 2-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="8" cy="8" r="5" stroke="currentColor" stroke-width="1.8" />
+                                <path d="M20 20H14a6 6 0 00-6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                <path d="M18 15l2 2-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
                         <h3 class="mb-2">Verified liquidity with direct client control</h3>
@@ -328,7 +335,7 @@ $img_path = get_template_directory_uri() . '/assets/img/seed';
                     <div class="eligibility_card">
                         <div class="elig_icon">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.3 1.5 4.05 3 5.5l7 7 7-7z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.3 1.5 4.05 3 5.5l7 7 7-7z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
                             </svg>
                         </div>
                         <h3 class="mb-2">Commitment to program timelines</h3>
@@ -340,8 +347,8 @@ $img_path = get_template_directory_uri() . '/assets/img/seed';
                     <div class="eligibility_card">
                         <div class="elig_icon">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                                <path d="M9 15l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                                <path d="M9 15l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
                         <h3 class="mb-2">Complete CIS, KYC, AML, and POF verification</h3>
@@ -353,7 +360,7 @@ $img_path = get_template_directory_uri() . '/assets/img/seed';
                     <div class="eligibility_card">
                         <div class="elig_icon">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
                         <h3 class="mb-2">Ability to articulate a compliant deployment plan</h3>
@@ -365,8 +372,8 @@ $img_path = get_template_directory_uri() . '/assets/img/seed';
                     <div class="eligibility_card">
                         <div class="elig_icon">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2L3 6v6c0 6.63 4.26 11.8 9 13 4.74-1.2 9-6.37 9-13V6L12 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                                <path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 2L3 6v6c0 6.63 4.26 11.8 9 13 4.74-1.2 9-6.37 9-13V6L12 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                                <path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
                         <h3 class="mb-2">Compatibility with institutional compliance standards</h3>
@@ -398,7 +405,7 @@ $img_path = get_template_directory_uri() . '/assets/img/seed';
                 <div class="col-lg-4 mb-4">
                     <div class="use_case_card">
                         <div class="use_case_image">
-                            <img src="<?php echo $img_path; ?>/seed-usecase-1.jpg" alt="Private Fund Participant" />
+                            <img loading="lazy" src="<?php echo $img_path; ?>/seed-usecase-1.jpg" alt="Private Fund Participant" title="Private Fund Participant" />
                         </div>
                         <div class="use_case_content">
                             <div class="scenario_tag">Scenario 1</div>
@@ -410,7 +417,7 @@ $img_path = get_template_directory_uri() . '/assets/img/seed';
                 <div class="col-lg-4 mb-4">
                     <div class="use_case_card">
                         <div class="use_case_image">
-                            <img src="<?php echo $img_path; ?>/seed-usecase-2.jpg" alt="High Net Worth Investor" />
+                            <img loading="lazy" src="<?php echo $img_path; ?>/seed-usecase-2.jpg" alt="High Net Worth Investor" title="High Net Worth Investor" />
                         </div>
                         <div class="use_case_content">
                             <div class="scenario_tag">Scenario 2</div>
@@ -422,7 +429,7 @@ $img_path = get_template_directory_uri() . '/assets/img/seed';
                 <div class="col-lg-4 mb-4">
                     <div class="use_case_card">
                         <div class="use_case_image">
-                            <img src="<?php echo $img_path; ?>/seed-usecase-3.jpg" alt="Corporate Entity" />
+                            <img loading="lazy" src="<?php echo $img_path; ?>/seed-usecase-3.jpg" alt="Corporate Entity" title="Corporate Entity" />
                         </div>
                         <div class="use_case_content">
                             <div class="scenario_tag">Scenario 3</div>
@@ -442,7 +449,7 @@ $img_path = get_template_directory_uri() . '/assets/img/seed';
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="section_header mb-5">
+                    <div class="section_header">
                         <h2 class="text-white">Frequently Asked Questions</h2>
                     </div>
                 </div>
@@ -453,7 +460,7 @@ $img_path = get_template_directory_uri() . '/assets/img/seed';
                             <button class="faq_question collapsed" data-bs-toggle="collapse" data-bs-target="#seed-faq-1" aria-expanded="false">
                                 Can international clients participate?
                                 <svg class="faq_icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 6l4 4 4-4" stroke="#c59b32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4 6l4 4 4-4" stroke="#c59b32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </button>
                             <div class="faq_answer collapse" id="seed-faq-1" data-bs-parent="#seedFaq">
@@ -465,7 +472,7 @@ $img_path = get_template_directory_uri() . '/assets/img/seed';
                             <button class="faq_question collapsed" data-bs-toggle="collapse" data-bs-target="#seed-faq-2" aria-expanded="false">
                                 Are there restrictions on capital usage?
                                 <svg class="faq_icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 6l4 4 4-4" stroke="#c59b32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4 6l4 4 4-4" stroke="#c59b32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </button>
                             <div class="faq_answer collapse" id="seed-faq-2" data-bs-parent="#seedFaq">
@@ -477,7 +484,7 @@ $img_path = get_template_directory_uri() . '/assets/img/seed';
                             <button class="faq_question collapsed" data-bs-toggle="collapse" data-bs-target="#seed-faq-3" aria-expanded="false">
                                 Are funds refundable if issuance fails?
                                 <svg class="faq_icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 6l4 4 4-4" stroke="#c59b32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4 6l4 4 4-4" stroke="#c59b32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </button>
                             <div class="faq_answer collapse" id="seed-faq-3" data-bs-parent="#seedFaq">
@@ -489,7 +496,7 @@ $img_path = get_template_directory_uri() . '/assets/img/seed';
                             <button class="faq_question collapsed" data-bs-toggle="collapse" data-bs-target="#seed-faq-4" aria-expanded="false">
                                 Do clients retain ownership of the instrument?
                                 <svg class="faq_icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 6l4 4 4-4" stroke="#c59b32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4 6l4 4 4-4" stroke="#c59b32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </button>
                             <div class="faq_answer collapse" id="seed-faq-4" data-bs-parent="#seedFaq">
@@ -501,7 +508,7 @@ $img_path = get_template_directory_uri() . '/assets/img/seed';
                             <button class="faq_question collapsed" data-bs-toggle="collapse" data-bs-target="#seed-faq-5" aria-expanded="false">
                                 What is the purpose of the initial capital contribution?
                                 <svg class="faq_icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 6l4 4 4-4" stroke="#c59b32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4 6l4 4 4-4" stroke="#c59b32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </button>
                             <div class="faq_answer collapse" id="seed-faq-5" data-bs-parent="#seedFaq">
@@ -515,19 +522,4 @@ $img_path = get_template_directory_uri() . '/assets/img/seed';
         </div>
     </div>
 </section>
-
-<!-- ========== DISCLOSURE ========== -->
-<section class="seed_disclosure">
-    <div class="wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <p class="disclosure_label">Program Disclosure</p>
-                    <p class="disclosure_text mb-0">The Structured Capital Formation Program is available exclusively to qualified clients who complete all compliance and eligibility steps. All timelines, processes, and distribution schedules depend on external institutional actors, including banks, monetizers, and trading platforms. Phoenix Capital Solutions does not provide guaranteed returns or performance commitments. All program descriptions are for informational purposes only and do not constitute legal or financial advice.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <?php get_footer(); ?>

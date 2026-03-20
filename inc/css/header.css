@@ -7,6 +7,120 @@ header {
         letter-spacing: 0%;
         vertical-align: middle;
         color: white;
+        position: relative;
+
+        /* Gold underline animation — desktop only, non-parent items */
+        @media (min-width: 992px) {
+            &:not(.dropdown-toggle)::after {
+                content: '';
+                position: absolute;
+                bottom: -2px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0%;
+                height: 2px;
+                background-color: #c59b32;
+                transition: width 0.3s ease;
+                border-radius: 2px;
+                -webkit-border-radius: 2px;
+            }
+
+            &:not(.dropdown-toggle):hover::after,
+            &:not(.dropdown-toggle).active::after {
+                width: 100%;
+            }
+        }
+    }
+
+    /* ── Bootstrap dropdown-toggle: replace default caret with gold arrow ── */
+    a.nav-link.dropdown-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 0 15px;
+
+        /* Remove Bootstrap's default caret */
+        &::after {
+            display: none !important;
+        }
+
+        /* Custom gold chevron */
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            border-right: 2px solid #c59b32;
+            border-bottom: 2px solid #c59b32;
+            transform: rotate(45deg);
+            transition: transform 0.3s ease;
+            margin-top: -3px;
+            order: 2;
+            flex-shrink: 0;
+
+            @media (max-width: 991px) {
+                display: none;
+            }
+        }
+
+        /* Rotate arrow when dropdown is open */
+        &[aria-expanded="true"]::before {
+            transform: rotate(-135deg);
+            margin-top: 3px;
+        }
+    }
+
+    /* ── Bootstrap dropdown-menu styling ── */
+    ul.dropdown-menu {
+        background-color: #2f2f2f;
+        border: none;
+        border-top: 2px solid #c59b32;
+        border-radius: 0 0 8px 8px;
+        -webkit-border-radius: 0 0 8px 8px;
+        padding: 8px 0;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        min-width: 200px;
+
+        /* Mobile: no absolute, no shadow, flush style */
+        @media (max-width: 991px) {
+            position: static !important;
+            box-shadow: none;
+            border-top: 1px solid rgba(197, 155, 50, 0.25);
+            border-radius: 0;
+            -webkit-border-radius: 0;
+            background-color: rgba(255, 255, 255, 0.04);
+            padding: 4px 0;
+            /* Override Bootstrap's display:none so it's always visible on mobile */
+            display: flex !important;
+            flex-direction: column;
+        }
+    }
+
+    /* ── Dropdown child items ── */
+    a.dropdown-item {
+        font-family: 'Instrument Sans', sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.8);
+        padding: 10px 20px;
+        background-color: transparent;
+        transition: color 0.2s ease, background-color 0.2s ease;
+        white-space: nowrap;
+
+        &:hover,
+        &:focus {
+            color: #c59b32;
+            background-color: rgba(197, 155, 50, 0.08);
+        }
+
+        @media (max-width: 991px) {
+            color: rgba(255, 255, 255, 0.65);
+            padding: 10px 24px;
+
+            &:hover {
+                background-color: transparent;
+                color: #c59b32;
+            }
+        }
     }
 
     a.contact_us {
@@ -19,7 +133,8 @@ header {
         font-weight: 600;
 
         @media (max-width: 992px) {
-            order: 3
+            order: 3;
+            margin: 15px 0;
         }
 
         @media (max-width: 575px) {
@@ -36,7 +151,6 @@ header {
         @media (max-width: 575px) {
             margin-right: 0;
         }
-
     }
 
     a.navbar-brand {
@@ -46,34 +160,27 @@ header {
 
         @media (max-width: 575px) {
             img {
-                max-width: 150px
+                max-width: 150px;
             }
         }
     }
 
     div#navbarNav {
-        gap: 0 15px;
-    }
-
-    ul.sub-menu {
-        display: none;
-        position: absolute;
-        top: 50px;
-        left: 0;
-        background-color: #2f2f2f;
-        padding: 20px;
+        @media (max-width: 991px) {
+            order: 3;
+        }
     }
 
     ul#menu-main-header {
-        li{
-            position: relative;
-            list-style: none;
+        @media (max-width: 991px) {
+            gap: 15px 0;
         }
-        li:hover {
-            ul.sub-menu {
+
+        li.menu-item-has-children {
+            @media (max-width: 991px) {
                 display: flex;
                 flex-direction: column;
-                padding-left: 20px;
+                gap: 15px 0;
             }
         }
     }

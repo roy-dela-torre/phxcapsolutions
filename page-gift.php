@@ -8,7 +8,7 @@ $img_path = get_template_directory_uri() . '/assets/img/gift';
             <div class="row align-items-center">
                 <div class="col-lg-5">
                     <div class="hero_image">
-                        <img src="<?php echo $img_path; ?>/gift-globe.jpg" alt="G.I.F.T. Program Globe" class="img-fluid">
+                        <img src="<?php echo $img_path; ?>/gift-globe.jpg" alt="G.I.F.T. Program Globe" title="G.I.F.T. Program Globe" loading="lazy" class="img-fluid">
                     </div>
                 </div>
                 <div class="col-lg-7">
@@ -148,7 +148,7 @@ $img_path = get_template_directory_uri() . '/assets/img/gift';
                 <div class="col-lg-6">
                     <div class="channel_card">
                         <h3 class="card_label">G.I.F.T. Grants Channel</h3>
-                        <img src="<?= $img_path ?>/grants-channel.png" alt="G.I.F.T. Grants Channel" class="img-fluid mb-3">
+                        <img src="<?= $img_path ?>/grants-channel.png" alt="G.I.F.T. Grants Channel" title="G.I.F.T. Grants Channel" loading="lazy" class="img-fluid mb-3">
                         <div id="grantsCarousel" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
@@ -186,7 +186,7 @@ $img_path = get_template_directory_uri() . '/assets/img/gift';
                 <div class="col-lg-6">
                     <div class="channel_card ventures">
                         <h3 class="card_label">G.I.F.T. Ventures Channel</h3>
-                        <img src="<?= $img_path ?>/ventures-channel.jpg" alt="G.I.F.T. Ventures Channel" class="img-fluid mb-3">
+                        <img src="<?= $img_path ?>/ventures-channel.jpg" alt="G.I.F.T. Ventures Channel" title="G.I.F.T. Ventures Channel" loading="lazy" class="img-fluid mb-3">
                         <div id="venturesCarousel" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
@@ -256,7 +256,7 @@ $img_path = get_template_directory_uri() . '/assets/img/gift';
                         <div class="flip_card_inner">
                             <div class="flip_card_front">
                                 <div class="front_image">
-                                    <img src="<?= $img_path ?>/fuel-gift.jpg" alt="F.U.E.L." class="img-fluid">
+                                    <img src="<?= $img_path ?>/fuel-gift.jpg" alt="F.U.E.L. Program" title="F.U.E.L. Program" loading="lazy" class="img-fluid">
                                 </div>
                                 <h3 class="text-white mb-0">F.U.E.L. → G.I.F.T.</h3>
                             </div>
@@ -277,7 +277,7 @@ $img_path = get_template_directory_uri() . '/assets/img/gift';
                         <div class="flip_card_inner">
                             <div class="flip_card_front">
                                 <div class="front_image">
-                                    <img src="<?= $img_path ?>/disc-gift.jpg" alt="D.I.S.C." class="img-fluid">
+                                    <img src="<?= $img_path ?>/disc-gift.jpg" alt="D.I.S.C. Program" title="D.I.S.C. Program" loading="lazy" class="img-fluid">
                                 </div>
                                 <h3 class="text-white mb-0">D.I.S.C. → G.I.F.T.</h3>
                             </div>
@@ -298,7 +298,7 @@ $img_path = get_template_directory_uri() . '/assets/img/gift';
                         <div class="flip_card_inner">
                             <div class="flip_card_front">
                                 <div class="front_image">
-                                    <img src="<?= $img_path ?>/carr-gift.jpg" alt="C.A.R.R." class="img-fluid">
+                                    <img src="<?= $img_path ?>/carr-gift.jpg" alt="C.A.R.R. Program" title="C.A.R.R. Program" loading="lazy" class="img-fluid">
                                 </div>
                                 <h3 class="text-white mb-0">C.A.R.R. → G.I.F.T.</h3>
                             </div>
@@ -319,7 +319,7 @@ $img_path = get_template_directory_uri() . '/assets/img/gift';
                         <div class="flip_card_inner">
                             <div class="flip_card_front">
                                 <div class="front_image">
-                                    <img src="<?= $img_path ?>/large-cap-gift.jpg" alt="Large Cap" class="img-fluid">
+                                    <img src="<?= $img_path ?>/large-cap-gift.jpg" alt="Large Cap Program" title="Large Cap Program" loading="lazy" class="img-fluid">
                                 </div>
                                 <h3 class="text-white mb-0">Large Cap → G.I.F.T.</h3>
                             </div>
@@ -456,7 +456,7 @@ $img_path = get_template_directory_uri() . '/assets/img/gift';
 
                 <div class="col-lg-5 mb-4">
                     <div class="section_image">
-                        <img src="<?= $img_path ?>/gift-scorecard.jpg" alt="G.I.F.T. Scorecard" class="img-fluid">
+                        <img src="<?= $img_path ?>/gift-scorecard.jpg" alt="G.I.F.T. Scorecard" title="G.I.F.T. Impact Scorecard" loading="lazy" class="img-fluid">
                     </div>
                 </div>
 
@@ -815,7 +815,7 @@ $img_path = get_template_directory_uri() . '/assets/img/gift';
 
                 <div class="col-lg-4 mb-4">
                     <div class="case_image">
-                        <img src="<?= $img_path ?>/gift-education.jpg" alt="Case Study Education" class="img-fluid">
+                        <img src="<?= $img_path ?>/gift-education.jpg" alt="Case Study Education" title="Education Impact Case Study" loading="lazy" class="img-fluid">
                     </div>
                 </div>
 
@@ -886,7 +886,7 @@ $img_path = get_template_directory_uri() . '/assets/img/gift';
 
                 <div class="col-md-12">
                     <div class="header">
-                        <h2 class="text-white mb-3">Case Study: The Renewable Energy Loop</h2>
+                        <h2 class="text-white mb-3 text-center">Case Study: The Renewable Energy Loop</h2>
                         <div class="impact_badge">
                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M7 1L8.5 5H13L9.5 7.5L11 11.5L7 9L3 11.5L4.5 7.5L1 5H5.5L7 1Z" stroke="#c59b32" stroke-width="1.2" stroke-linejoin="round" />
@@ -968,7 +968,7 @@ $img_path = get_template_directory_uri() . '/assets/img/gift';
 
                 <div class="col-md-12">
                     <div class="header">
-                        <h2 class="text-white mb-3">Case Study: The Bridge to Scale</h2>
+                        <h2 class="text-white mb-3 text-center">Case Study: The Bridge to Scale</h2>
                         <div class="impact_badge">
                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M7 2L2 5v4c0 2.5 2.2 4.8 5 5.5 2.8-.7 5-3 5-5.5V5L7 2z" stroke="#c59b32" stroke-width="1.2" stroke-linejoin="round" />
@@ -981,7 +981,7 @@ $img_path = get_template_directory_uri() . '/assets/img/gift';
                 <div class="col-lg-6">
                     <div class="content">
                         <div class="content_image mb-3">
-                            <img src="<?= $img_path; ?>/gift-bridge-plans.jpg" alt="Financing Gap" class="img-fluid">
+                            <img src="<?= $img_path; ?>/gift-bridge-plans.jpg" alt="Financing Gap" title="Financing Gap Challenge" loading="lazy" class="img-fluid">
                         </div>
                         <h3 class="text-gold mb-3">The Financing Gap</h3>
                         <p class="text-white mb-2"><strong class="text-gold">Capital Source:</strong> F.U.E.L. project profits</p>
@@ -993,7 +993,7 @@ $img_path = get_template_directory_uri() . '/assets/img/gift';
                 <div class="col-lg-6">
                     <div class="content">
                         <div class="content_image mb-3">
-                            <img src="<?= $img_path; ?>/gift-bridge-team.jpg" alt="G.I.F.T. Solution" class="img-fluid">
+                            <img src="<?= $img_path; ?>/gift-bridge-team.jpg" alt="G.I.F.T. Solution" title="G.I.F.T. Bridge Solution" loading="lazy" class="img-fluid">
                         </div>
                         <h3 class="text-gold mb-3">The G.I.F.T. Solution</h3>
                         <p class="text-white mb-3"><strong class="text-gold">Deployment:</strong> First-loss capital enabling $30M commercial investment in affordable housing project</p>
@@ -1032,8 +1032,7 @@ $img_path = get_template_directory_uri() . '/assets/img/gift';
 
                 <div class="col-md-12">
                     <div class="header">
-                        <h2 class="text-gold">Next Steps: Launching G.I.F.T.</h2>
-                        <h2 class="text-gold">The Implementation Roadmap</h2>
+                        <h2 class="text-gold text-center">Next Steps: Launching G.I.F.T. <br>The Implementation Roadmap</h2>
                     </div>
                 </div>
 
@@ -1167,7 +1166,7 @@ $img_path = get_template_directory_uri() . '/assets/img/gift';
 
                 <div class="col-lg-4 mb-4">
                     <div class="contact_image">
-                        <img src="<?= $img_path ?>/gift-contact.jpg" alt="Contact G.I.F.T." class="img-fluid">
+                        <img src="<?= $img_path ?>/gift-contact.jpg" alt="Contact G.I.F.T." title="Contact G.I.F.T. Program" loading="lazy" class="img-fluid">
                     </div>
                 </div>
 
@@ -1185,7 +1184,7 @@ $img_path = get_template_directory_uri() . '/assets/img/gift';
                                 <h4 class="text-white mb-3">Phoenix Capital Solutions</h4>
                                 <p class="text-white mb-4">We welcome inquiries from asset owners, impact organizations, co-investors, and partners who share our vision of purpose-driven capital deployment.</p>
                                 <div class="btn_group">
-                                    <a href="mailto:gift@phxcapsolutions.com" class="btn_gold">Email Us</a>
+                                    <a href="mailto:info@phxcapsolutions.com" class="btn_gold">Email Us</a>
                                     <a href="https://www.phxcapsolutions.com/gift" target="_blank" class="btn_outline">Visit Our Website</a>
                                 </div>
                             </div>
@@ -1195,7 +1194,7 @@ $img_path = get_template_directory_uri() . '/assets/img/gift';
                             <div class="content">
                                 <h3 class="text-gold mb-3">Connect With Our Team</h3>
                                 <ul class="contact_list">
-                                    <li class="text-white"><strong class="text-white">General Inquiries:</strong> <a href="mailto:gift@phxcapsolutions.com" class="text-gold">gift@phxcapsolutions.com</a></li>
+                                    <li class="text-white"><strong class="text-white">General Inquiries:</strong> <a href="mailto:info@phxcapsolutions.com" class="text-gold">info@phxcapsolutions.com</a></li>
                                     <li class="text-white"><strong class="text-white">Grant Applications:</strong> Submit through online portal at website</li>
                                     <li class="text-white"><strong class="text-white">Investment Opportunities:</strong> Contact G.I.F.T. Ventures team directly</li>
                                     <li class="text-white mb-0"><strong class="text-white">Partnership Discussions:</strong> Schedule consultation with Program Director</li>
@@ -1264,7 +1263,7 @@ $img_path = get_template_directory_uri() . '/assets/img/gift';
 
                 <div class="col-lg-5 mb-4">
                     <div class="future_image">
-                        <img src="<?= $img_path ?>/gift-future.jpg" alt="The Future is G.I.F.T." class="img-fluid">
+                        <img src="<?= $img_path ?>/gift-future.jpg" alt="The Future is G.I.F.T." title="The Future is G.I.F.T." loading="lazy" class="img-fluid">
                     </div>
                 </div>
 
@@ -1274,12 +1273,24 @@ $img_path = get_template_directory_uri() . '/assets/img/gift';
                         <div class="quote_block">
                             <p class="text-white mb-0">"In a world where capital flows to the highest return, G.I.F.T. proves that the highest return includes lives transformed, communities restored, and futures rewritten. This is not philanthropy. This is capitalism evolved."</p>
                         </div>
-                        <div class="disclaimer">
-                            <p class="text-white mb-0"><em>G.I.F.T. — Grants and Investments for Future Transformation is a program of Phoenix Capital Solutions. All deployments subject to due diligence, compliance verification, and G.I.F.T. Council approval.</em></p>
-                        </div>
+
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== DISCLOSURE NOTICE ========== -->
+<section class="gift_disclosure_cta">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p class="disclosure_label text-white mb-3">Program Disclosures & Legal Notices</p>
+                    <a href="/disclosure/#disclosure-gift" class="btn_gold">View G.I.F.T. Disclosure Statement</a>
+                </div>
             </div>
         </div>
     </div>

@@ -39,4 +39,45 @@
         }
 
     });
+
+    $('img[loading="lazy"]').each(function () {
+        var $img = $(this);
+        var originalSrc = $img.attr('data-src') || $img.attr('src');
+        if (originalSrc) {
+            function setImageSource(imgElem, src) {
+                $(imgElem).attr('src', src);
+
+            }
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function (entries, observer) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            var img = entry.target;
+                            setImageSource(img, originalSrc);
+                            observer.unobserve(img);
+
+                        }
+                    });
+                });
+                observer.observe(this);
+            } else {
+                setImageSource($img, originalSrc);
+
+            }
+            $img.on('load', function () {
+                var width = $img.width();
+                var height = $img.height();
+                $img.attr({
+                    'width': width,
+                    'height': height
+
+                });
+            }).attr({
+                'data-src': originalSrc,
+                'decoding': 'async'
+
+            });
+        }
+    });
+    
 })(jQuery);

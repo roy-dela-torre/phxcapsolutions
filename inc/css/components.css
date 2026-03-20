@@ -1,0 +1,586 @@
+/* ============================================================
+   PHOENIX CAPITAL SOLUTIONS — SHARED COMPONENTS
+   inc/css/components.css
+   
+   Load order: global.css → components.css → [page].css
+   Enqueue as: wp_enqueue_style('components', ..., array('global'))
+   ============================================================ */
+
+
+/* ── 1. SECTION HEADER ──────────────────────────────────────
+   Usage: template/components/section-header.php
+   ---------------------------------------------------------- */
+.section_header {
+    margin-bottom: 40px;
+
+    .program_label {
+        display: inline-block;
+        font-family: 'Instrument Sans', sans-serif;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #c59b32;
+        background-color: rgba(197, 155, 50, 0.12);
+        border: 1px solid rgba(197, 155, 50, 0.3);
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        padding: 4px 14px;
+        margin-bottom: 16px;
+    }
+
+    h2 {
+        &.text_gold  { color: #c59b32; }
+        &.text-white { color: #ffffff; }
+    }
+
+    p {
+        color: rgba(255, 255, 255, 0.65);
+        max-width: 680px;
+    }
+
+    &.text-center p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+
+/* ── 2. FAQ ACCORDION ───────────────────────────────────────
+   Usage: template/components/faq.php
+   ---------------------------------------------------------- */
+.faq_accordion {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    -webkit-border-radius: 16px;
+    overflow: hidden;
+}
+
+.faq_item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+    &:last-child { border-bottom: none; }
+}
+
+.faq_question {
+    width: 100%;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 20px 24px;
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #ffffff;
+    text-align: left;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    &:hover { color: #c59b32; }
+
+    &[aria-expanded="true"] {
+        color: #c59b32;
+
+        .faq_icon { transform: rotate(180deg); }
+    }
+
+    .faq_icon {
+        flex-shrink: 0;
+        transition: transform 0.3s ease;
+    }
+}
+
+.faq_answer {
+    padding: 0 24px;
+
+    &.show { padding: 0 24px 20px; }
+
+    p {
+        color: rgba(255, 255, 255, 0.65);
+        margin-bottom: 0;
+    }
+}
+
+
+/* ── 3. CONTENT CARD ────────────────────────────────────────
+   Usage: template/components/content-card.php
+   ---------------------------------------------------------- */
+.content_card {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    -webkit-border-radius: 16px;
+    padding: 32px 28px;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #c59b32, transparent);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    &:hover {
+        border-color: rgba(197, 155, 50, 0.35);
+        transform: translateY(-4px);
+    }
+
+    &:hover::before { opacity: 1; }
+
+    /* Gold border variant — always shows top line */
+    &.content_card--gold {
+        border-color: rgba(197, 155, 50, 0.35);
+
+        &::before { opacity: 1; }
+    }
+
+    .card_label {
+        font-family: 'Instrument Sans', sans-serif;
+        font-weight: 600;
+        font-size: 0.70rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #c59b32;
+        margin-bottom: 14px;
+    }
+
+    h3 { color: #c59b32; }
+
+    p { color: rgba(255, 255, 255, 0.65); }
+}
+
+
+/* ── 4. DETAIL LIST ─────────────────────────────────────────
+   Usage: template/components/detail-list.php
+   ---------------------------------------------------------- */
+.detail_list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+
+    li {
+        color: rgba(255, 255, 255, 0.65);
+        padding: 10px 0 10px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        position: relative;
+        font-family: 'Instrument Sans', sans-serif;
+        font-size: 18px;
+        line-height: 1.5;
+
+        &:first-child { padding-top: 0; }
+        &:last-child  { border-bottom: none; padding-bottom: 0; }
+
+        /* Gold dot */
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            background-color: #c59b32;
+        }
+    }
+
+    /* Left gold bar variant */
+    &.detail_list--bar li {
+        padding-left: 16px;
+
+        &::before {
+            width: 3px;
+            height: 60%;
+            border-radius: 2px;
+            -webkit-border-radius: 2px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+}
+
+
+/* ── 5. HIGHLIGHT BOX ───────────────────────────────────────
+   Usage: template/components/highlight-box.php
+   ---------------------------------------------------------- */
+.highlight_box {
+    background-color: rgba(197, 155, 50, 0.08);
+    border: 1px solid rgba(197, 155, 50, 0.25);
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+
+    .highlight_icon {
+        flex-shrink: 0;
+        margin-top: 2px;
+
+        svg { width: 20px; height: 20px; }
+    }
+
+    p {
+        color: rgba(255, 255, 255, 0.80);
+        margin-bottom: 0;
+    }
+
+    /* Warning variant */
+    &.highlight_box--warning {
+        background-color: rgba(197, 155, 50, 0.06);
+        border-color: rgba(197, 155, 50, 0.3);
+
+        p {
+            color: rgba(197, 155, 50, 0.90);
+            font-weight: 600;
+        }
+    }
+
+    /* Info variant — subtle */
+    &.highlight_box--info {
+        background-color: rgba(255, 255, 255, 0.03);
+        border-color: rgba(255, 255, 255, 0.10);
+        border-left: 3px solid #c59b32;
+        border-radius: 0 12px 12px 0;
+        -webkit-border-radius: 0 12px 12px 0;
+
+        p { color: rgba(255, 255, 255, 0.60); }
+    }
+}
+
+
+/* ── 6. STAT BLOCK ──────────────────────────────────────────
+   Usage: template/components/stat-block.php
+   ---------------------------------------------------------- */
+.stat_block {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+    &:first-child { padding-top: 0; }
+    &:last-child  { border-bottom: none; padding-bottom: 0; }
+
+    .stat_number {
+        font-family: 'Gilroy', sans-serif;
+        font-weight: 800;
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        color: #c59b32;
+        letter-spacing: -1px;
+        line-height: 1;
+        margin-bottom: 4px;
+    }
+
+    .stat_label {
+        font-family: 'Instrument Sans', sans-serif;
+        font-weight: 700;
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.90);
+        margin-bottom: 6px;
+    }
+
+    p {
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 15px;
+        margin-bottom: 0;
+    }
+}
+
+
+/* ── 7. FLIP CARD ───────────────────────────────────────────
+   Usage: template/components/flip-card.php
+   ---------------------------------------------------------- */
+.flip_card {
+    perspective: 1000px;
+
+    .flip_card_inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: transform 0.65s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    &:hover .flip_card_inner { transform: rotateY(180deg); }
+
+    .flip_card_front,
+    .flip_card_back {
+        position: absolute;
+        inset: 0;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        border-radius: 16px;
+        -webkit-border-radius: 16px;
+        padding: 28px 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        overflow: hidden;
+    }
+
+    .flip_card_front {
+        background-color: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+
+        .front_image {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+
+            img {
+                width: 100%; height: 100%;
+                object-fit: cover;
+                opacity: 0.45;
+                border-radius: 16px;
+                -webkit-border-radius: 16px;
+            }
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%);
+            border-radius: 16px;
+            -webkit-border-radius: 16px;
+            z-index: 1;
+        }
+
+        .card_label, h3 {
+            position: relative;
+            z-index: 2;
+        }
+
+        .card_label {
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #c59b32;
+            margin-bottom: 8px;
+        }
+
+        h3 { color: #ffffff; }
+    }
+
+    .flip_card_back {
+        background-color: rgba(10, 10, 10, 0.97);
+        border: 1px solid rgba(197, 155, 50, 0.3);
+        transform: rotateY(180deg);
+        justify-content: flex-start;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c59b32, transparent);
+        }
+
+        .card_label {
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #c59b32;
+            margin-bottom: 16px;
+        }
+
+        p { color: rgba(255, 255, 255, 0.65); }
+    }
+}
+
+
+/* ── 8. ELIGIBILITY CARD ────────────────────────────────────
+   Usage: template/components/eligibility-card.php
+   ---------------------------------------------------------- */
+.eligibility_card {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    -webkit-border-radius: 16px;
+    padding: 28px 24px;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #c59b32, transparent);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    &:hover {
+        border-color: rgba(197, 155, 50, 0.35);
+
+        &::before { opacity: 1; }
+    }
+
+    .elig_icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        -webkit-border-radius: 12px;
+        background-color: rgba(197, 155, 50, 0.10);
+        border: 1px solid rgba(197, 155, 50, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+        color: #c59b32;
+
+        svg { color: #c59b32; }
+    }
+
+    h3 {
+        color: #ffffff;
+        margin-bottom: 8px;
+    }
+
+    p {
+        color: rgba(255, 255, 255, 0.60);
+        margin-bottom: 0;
+    }
+}
+
+
+/* ── 9. PHASE CARD ──────────────────────────────────────────
+   Usage: template/components/phase-card.php
+   ---------------------------------------------------------- */
+.phase_card {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    -webkit-border-radius: 16px;
+    padding: 32px 28px;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+
+    &.active,
+    &:hover {
+        border-color: rgba(197, 155, 50, 0.35);
+
+        .phase_line { opacity: 1; }
+    }
+
+    .phase_line {
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #c59b32, transparent);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .phase_icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        -webkit-border-radius: 12px;
+        background-color: rgba(197, 155, 50, 0.10);
+        border: 1px solid rgba(197, 155, 50, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        color: #c59b32;
+    }
+
+    .phase_tag {
+        font-family: 'Instrument Sans', sans-serif;
+        font-size: 0.70rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #c59b32;
+        margin-bottom: 10px;
+    }
+
+    h3 { color: #ffffff; }
+
+    p  { color: rgba(255, 255, 255, 0.65); }
+
+    .phase_list {
+        list-style: none;
+        padding: 0;
+        margin: 14px 0 0;
+        display: flex;
+        flex-direction: column;
+
+        li {
+            color: rgba(255, 255, 255, 0.65);
+            padding: 8px 0 8px 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            position: relative;
+            font-size: 15px;
+
+            &:first-child { padding-top: 0; }
+            &:last-child  { border-bottom: none; padding-bottom: 0; }
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0; top: 50%;
+                transform: translateY(-50%);
+                width: 5px; height: 5px;
+                border-radius: 50%;
+                -webkit-border-radius: 50%;
+                background-color: #c59b32;
+            }
+        }
+    }
+}
+
+
+/* ── 10. HERO SECTION ───────────────────────────────────────
+   Usage: template/components/hero-section.php
+   Base hero styles — override per-page for bg image etc.
+   ---------------------------------------------------------- */
+.hero_content {
+    .program_label {
+        display: inline-block;
+        font-family: 'Instrument Sans', sans-serif;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #c59b32;
+        background-color: rgba(197, 155, 50, 0.12);
+        border: 1px solid rgba(197, 155, 50, 0.30);
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        padding: 4px 14px;
+        margin-bottom: 20px;
+    }
+}
+
+.hero_image {
+    img {
+        width: 100%;
+        height: auto;
+        display: block;
+        filter: drop-shadow(0 0 40px rgba(197, 155, 50, 0.20));
+    }
+}
+
+.hero_btns {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}

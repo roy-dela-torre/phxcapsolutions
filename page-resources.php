@@ -113,7 +113,7 @@ get_header();
                         <!-- Subscribe Card -->
                         <div class="sidebar_widget sidebar_subscribe">
                             <div class="subscribe_bg_wrap">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/global/subscribe-bg.jpg" alt="" />
+                                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/img/global/subscribe-bg.jpg" alt="Subscribe background" title="Subscribe" />
                                 <div class="subscribe_overlay"></div>
                                 <div class="subscribe_inner">
                                     <p class="subscribe_heading">Receive the latest news in your email</p>

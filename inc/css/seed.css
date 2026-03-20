@@ -429,23 +429,3 @@ section.seed_faq {
         p { color: rgba(255,255,255,0.65); line-height: 1.75; margin: 0; }
     }
 }
-
-/* =============================================
-   DISCLOSURE — gold background
-   ============================================= */
-section.seed_disclosure {
-    background-color: #c59b32;
-    padding: 48px 30px !important;
-
-    &::before { display: none; }
-
-    .disclosure_label {
-        font-size: 0.75rem; font-weight: 700; letter-spacing: 3px;
-        text-transform: uppercase; color: #ffffff; margin-bottom: 16px;
-    }
-
-    .disclosure_text {
-        color: rgba(255,255,255,0.8); font-size: 0.82rem; line-height: 1.7;
-        max-width: 800px; margin: 0 auto;
-    }
-}

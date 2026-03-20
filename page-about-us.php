@@ -15,7 +15,7 @@ $img_path = get_template_directory_uri() . '/assets/img/about_us';
             <div class="row align-items-center">
                 <div class="col-lg-5 mb-4 mb-lg-0">
                     <div class="hero_image">
-                        <img src="<?php echo $img_path; ?>/about-hero.jpg" alt="Phoenix Capital Solutions Team" />
+                        <img loading="lazy" src="<?php echo $img_path; ?>/about-hero.jpg" alt="Phoenix Capital Solutions Team" title="Phoenix Capital Solutions Team" />
                         <div class="image_badge">
                             <span class="badge_number">2012</span>
                             <span class="badge_label">Founded</span>
@@ -66,7 +66,7 @@ $img_path = get_template_directory_uri() . '/assets/img/about_us';
                 </div>
                 <div class="col-lg-6">
                     <div class="stats_image">
-                        <img src="<?php echo $img_path; ?>/about-stats.jpg" alt="Phoenix Capital Global Reach" />
+                        <img loading="lazy" src="<?php echo $img_path; ?>/about-stats.jpg" alt="Phoenix Capital Global Reach" title="Phoenix Capital Global Reach" />
                         <div class="floating_card">
                             <div class="fc_icon">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -101,7 +101,7 @@ $img_path = get_template_directory_uri() . '/assets/img/about_us';
                 <div class="col-lg-6 col-md-6 mb-4">
                     <div class="team_card">
                         <div class="team_image">
-                            <img src="<?php echo $img_path; ?>/staff-01.jpg" alt="Justin Watson" />
+                            <img loading="lazy" src="<?php echo $img_path; ?>/staff-01.jpg" alt="Justin Watson" title="Justin Watson" />
                         </div>
                         <div class="team_info">
                             <h3 class="text-white mb-1">Justin Watson</h3>
@@ -114,7 +114,7 @@ $img_path = get_template_directory_uri() . '/assets/img/about_us';
                 <div class="col-lg-6 col-md-6 mb-4">
                     <div class="team_card">
                         <div class="team_image">
-                            <img src="<?php echo $img_path; ?>/staff-05.jpg" alt="Lori Cruz" />
+                            <img loading="lazy" src="<?php echo $img_path; ?>/staff-05.jpg" alt="Lori Cruz" title="Lori Cruz" />
                         </div>
                         <div class="team_info">
                             <h3 class="text-white mb-1">Lori Cruz</h3>
@@ -521,7 +521,7 @@ $img_path = get_template_directory_uri() . '/assets/img/about_us';
                         <blockquote class="text-white">"Phoenix Capital brought a level of structure and compliance to our capital strategy that we had never experienced with traditional lenders. The program delivered exactly what was outlined — no surprises, no shortcuts."</blockquote>
                         <div class="reviewer">
                             <div class="reviewer_avatar">
-                                <img src="<?php echo $img_path; ?>/Alicia Regnier.jpg" alt="Alicia Regnier" />
+                                <img loading="lazy" src="<?php echo $img_path; ?>/Alicia Regnier.jpg" alt="Alicia Regnier" title="Alicia Regnier" />
                             </div>
                             <div class="reviewer_info">
                                 <div class="reviewer_name text-white">Alicia Regnier</div>
@@ -543,7 +543,7 @@ $img_path = get_template_directory_uri() . '/assets/img/about_us';
                         <blockquote class="text-white">"The documentation process was thorough and the compliance framework gave us confidence throughout. A truly institutional-grade experience."</blockquote>
                         <div class="reviewer">
                             <div class="reviewer_avatar">
-                                <img src="<?php echo $img_path; ?>/Marie Hibbler.jpg" alt="Marie Hibbler" />
+                                <img loading="lazy" src="<?php echo $img_path; ?>/Marie Hibbler.jpg" alt="Marie Hibbler" title="Marie Hibbler" />
                             </div>
                             <div class="reviewer_info">
                                 <div class="reviewer_name text-white">Marie Hibbler</div>
@@ -565,7 +565,7 @@ $img_path = get_template_directory_uri() . '/assets/img/about_us';
                         <blockquote class="text-white">"Working with Phoenix opened access to banking relationships that simply weren't available through traditional channels. Their network is unmatched."</blockquote>
                         <div class="reviewer">
                             <div class="reviewer_avatar">
-                                <img src="<?php echo $img_path; ?>/Evan Hoffman.jpg" alt="Evan Hoffman" />
+                                <img loading="lazy" src="<?php echo $img_path; ?>/Evan Hoffman.jpg" alt="Evan Hoffman" title="Evan Hoffman" />
                             </div>
                             <div class="reviewer_info">
                                 <div class="reviewer_name text-white">Evan Hoffman</div>
@@ -590,7 +590,7 @@ $img_path = get_template_directory_uri() . '/assets/img/about_us';
                         <blockquote class="text-white">"The structured approach to capital deployment was different from anything we'd encountered. Compliance-first, results-driven — exactly what we needed."</blockquote>
                         <div class="reviewer">
                             <div class="reviewer_avatar">
-                                <img src="<?php echo $img_path; ?>/Richard Jeremy.jpg" alt="Richard Jeremy" />
+                                <img loading="lazy" src="<?php echo $img_path; ?>/Richard Jeremy.jpg" alt="Richard Jeremy" title="Richard Jeremy" />
                             </div>
                             <div class="reviewer_info">
                                 <div class="reviewer_name text-white">Richard Jeremy</div>
@@ -612,7 +612,7 @@ $img_path = get_template_directory_uri() . '/assets/img/about_us';
                         <blockquote class="text-white">"Praesent sapien massa, convallis a pellentesque nec, egestas non nisl. Vestibulum ante ipsum primis in faucibus orci luctus."</blockquote>
                         <div class="reviewer">
                             <div class="reviewer_avatar">
-                                <img src="<?php echo $img_path; ?>/Brent Schull.jpg" alt="Brent Schull" />
+                                <img loading="lazy" src="<?php echo $img_path; ?>/Brent Schull.jpg" alt="Brent Schull" title="Brent Schull" />
                             </div>
                             <div class="reviewer_info">
                                 <div class="reviewer_name text-white">Brent Schull</div>
@@ -634,7 +634,7 @@ $img_path = get_template_directory_uri() . '/assets/img/about_us';
                         <blockquote class="text-white">"Donec rutrum congue leo eget malesuada. Cras ultricies ligula sed magna dictum porta. Nulla porttitor accumsan."</blockquote>
                         <div class="reviewer">
                             <div class="reviewer_avatar">
-                                <img src="<?php echo $img_path; ?>/Elizabeth Varela.jpg" alt="Elizabeth Varela" />
+                                <img loading="lazy" src="<?php echo $img_path; ?>/Elizabeth Varela.jpg" alt="Elizabeth Varela" title="Elizabeth Varela" />
                             </div>
                             <div class="reviewer_info">
                                 <div class="reviewer_name text-white">Elizabeth Varela</div>
@@ -656,7 +656,7 @@ $img_path = get_template_directory_uri() . '/assets/img/about_us';
                         <blockquote class="text-white">"Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt nibh."</blockquote>
                         <div class="reviewer">
                             <div class="reviewer_avatar">
-                                <img src="<?php echo $img_path; ?>/Jay C. McLendon.jpg" alt="Jay C. McLendon" />
+                                <img loading="lazy" src="<?php echo $img_path; ?>/Jay C. McLendon.jpg" alt="Jay C. McLendon" title="Jay C. McLendon" />
                             </div>
                             <div class="reviewer_info">
                                 <div class="reviewer_name text-white">Jay C. McLendon</div>

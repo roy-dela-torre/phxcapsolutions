@@ -33,7 +33,7 @@ $img_path = get_template_directory_uri() . '/assets/img/services';
                 <div class="col-lg-6 mb-4">
                     <div class="service_card">
                         <div class="service_image">
-                            <img src="<?php echo $img_path; ?>/finance-management.jpg" alt="Finance Management" />
+                            <img loading="lazy" src="<?php echo $img_path; ?>/finance-management.jpg" alt="Finance Management" title="Finance Management" />
                         </div>
                         <div class="service_content">
                             <h3 class="text-white">Finance management</h3>
@@ -46,7 +46,7 @@ $img_path = get_template_directory_uri() . '/assets/img/services';
                 <div class="col-lg-6 mb-4">
                     <div class="service_card">
                         <div class="service_image">
-                            <img src="<?php echo $img_path; ?>/business-consulting.jpg" alt="Business Consulting" />
+                            <img loading="lazy" src="<?php echo $img_path; ?>/business-consulting.jpg" alt="Business Consulting" title="Business Consulting" />
                         </div>
                         <div class="service_content">
                             <h3 class="text-white">Business consulting</h3>
@@ -59,7 +59,7 @@ $img_path = get_template_directory_uri() . '/assets/img/services';
                 <div class="col-lg-6 mb-4">
                     <div class="service_card">
                         <div class="service_image">
-                            <img src="<?php echo $img_path; ?>/tax-consultancy.jpg" alt="Tax Consultancy" />
+                            <img loading="lazy" src="<?php echo $img_path; ?>/tax-consultancy.jpg" alt="Tax Consultancy" title="Tax Consultancy" />
                         </div>
                         <div class="service_content">
                             <h3 class="text-white">Tax consultancy</h3>
@@ -72,7 +72,7 @@ $img_path = get_template_directory_uri() . '/assets/img/services';
                 <div class="col-lg-6 mb-4">
                     <div class="service_card">
                         <div class="service_image">
-                            <img src="<?php echo $img_path; ?>/capital-markets.jpg" alt="Capital Markets" />
+                            <img loading="lazy" src="<?php echo $img_path; ?>/capital-markets.jpg" alt="Capital Markets" title="Capital Markets" />
                         </div>
                         <div class="service_content">
                             <h3 class="text-white">Capital markets</h3>
@@ -90,7 +90,7 @@ $img_path = get_template_directory_uri() . '/assets/img/services';
 <!-- ========== CTA BANNER ========== -->
 <section class="services_cta_banner">
     <div class="cta_image_wrap">
-        <img src="<?php echo $img_path; ?>/services-cta.jpg" alt="Business solutions" />
+        <img loading="lazy" src="<?php echo $img_path; ?>/services-cta.jpg" alt="Business solutions" title="Business solutions" />
         <div class="cta_overlay"></div>
     </div>
     <div class="wrapper">

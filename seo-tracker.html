@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>PCS SEO Tracker</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 12px;
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        header {
+            background: linear-gradient(90deg, #1a1a1a, #2a2a2a);
+            border-bottom: 2px solid #c59b32;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        header h1 {
+            font-size: 18px;
+            color: #c59b32;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 2px;
+        }
+
+        .badge {
+            background: rgba(197, 155, 50, 0.15);
+            border: 1px solid rgba(197, 155, 50, 0.4);
+            color: #c59b32;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 2px;
+            padding: 12px 24px 0;
+            background: #111;
+            overflow-x: auto;
+        }
+
+        .tab {
+            padding: 8px 16px;
+            background: #2a2a2a;
+            border: 1px solid #333;
+            border-bottom: none;
+            border-radius: 6px 6px 0 0;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .tab:hover {
+            background: #333;
+            color: #fff;
+        }
+
+        .tab.active {
+            background: #1e1e1e;
+            border-color: #c59b32;
+            color: #c59b32;
+        }
+
+        .sheet-container {
+            background: #1e1e1e;
+            border: 1px solid #333;
+            margin: 0 24px 24px;
+            border-radius: 0 8px 8px 8px;
+            overflow: hidden;
+        }
+
+        .sheet {
+            display: none;
+            overflow-x: auto;
+        }
+
+        .sheet.active {
+            display: block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead tr {
+            background: #2a2000;
+        }
+
+        thead th {
+            padding: 10px 12px;
+            text-align: left;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #c59b32;
+            border-right: 1px solid #333;
+            white-space: nowrap;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #2a2a2a;
+            transition: background 0.15s;
+        }
+
+        tbody tr:hover {
+            background: rgba(197, 155, 50, 0.04);
+        }
+
+        tbody td {
+            padding: 10px 12px;
+            vertical-align: top;
+            border-right: 1px solid #2a2a2a;
+            line-height: 1.5;
+        }
+
+        .row-label {
+            background: #222;
+            font-weight: 700;
+            color: #c59b32;
+            font-size: 11px;
+            white-space: nowrap;
+            min-width: 160px;
+        }
+
+        .field-filled {
+            color: #e0e0e0;
+        }
+
+        .field-empty {
+            color: #555;
+            font-style: italic;
+        }
+
+        .field-todo {
+            background: rgba(197, 155, 50, 0.08);
+            color: #c59b32;
+            font-style: italic;
+        }
+
+        .char-ok {
+            color: #4caf50;
+            font-size: 10px;
+        }
+
+        .char-warn {
+            color: #ff9800;
+            font-size: 10px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            margin: 1px;
+        }
+
+        .tag-h1 {
+            background: rgba(76, 175, 80, 0.15);
+            color: #4caf50;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+
+        .tag-h2 {
+            background: rgba(33, 150, 243, 0.15);
+            color: #64b5f6;
+            border: 1px solid rgba(33, 150, 243, 0.3);
+        }
+
+        .tag-faq {
+            background: rgba(156, 39, 176, 0.15);
+            color: #ce93d8;
+            border: 1px solid rgba(156, 39, 176, 0.3);
+        }
+
+        .tag-img {
+            background: rgba(255, 152, 0, 0.15);
+            color: #ffb74d;
+            border: 1px solid rgba(255, 152, 0, 0.3);
+        }
+
+        .tag-todo {
+            background: rgba(197, 155, 50, 0.15);
+            color: #c59b32;
+            border: 1px solid rgba(197, 155, 50, 0.3);
+        }
+
+        .col-url {
+            min-width: 200px;
+        }
+
+        .col-title {
+            min-width: 280px;
+        }
+
+        .col-desc {
+            min-width: 360px;
+        }
+
+        .col-kw {
+            min-width: 200px;
+        }
+
+        .col-h {
+            min-width: 280px;
+        }
+
+        .col-faq {
+            min-width: 340px;
+        }
+
+        .col-img {
+            min-width: 300px;
+        }
+
+        .col-schema {
+            min-width: 120px;
+        }
+
+        .status-done {
+            color: #4caf50;
+            font-weight: 700;
+        }
+
+        .status-todo {
+            color: #c59b32;
+            font-weight: 700;
+        }
+
+        .status-na {
+            color: #555;
+        }
+
+        .legend {
+            display: flex;
+            gap: 16px;
+            padding: 10px 24px;
+            background: #111;
+            font-size: 10px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .instructions {
+            margin: 16px 24px;
+            background: rgba(197, 155, 50, 0.06);
+            border: 1px solid rgba(197, 155, 50, 0.2);
+            border-radius: 8px;
+            padding: 14px 18px;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+        }
+
+        .instructions strong {
+            color: #c59b32;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <h1>Phoenix Capital Solutions — SEO Tracker</h1>
+            <p>phxcapsolutions.com · All pages · Pre-filled from theme source</p>
+        </div>
+        <span class="badge">15 Pages</span>
+        <span class="badge">Roy — WP Theme Dev</span>
+    </header>
+
+    <div class="instructions">
+        <strong>How to use:</strong> Yellow cells = needs your input. Green = already extracted from theme. Each tab =
+        one page.
+        Fill in <strong>SEO Title</strong>, <strong>Meta Description</strong>, <strong>Focus Keyword</strong>,
+        <strong>FAQ Answers</strong> (for schema), and <strong>OG Image</strong> per page.
+        Once filled, send back and I'll generate all PHP SEO code, schema markup, and alt text.
+    </div>
+
+    <div class="legend">
+        <div class="legend-item">
+            <div class="legend-dot" style="background:#4caf50"></div> Extracted from theme
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background:#c59b32"></div> Needs your input
+        </div>
+        <div class="legend-item">
+            <div class="legend-dot" style="background:#64b5f6"></div> Recommended
+        </div>
+    </div>
+
+    <div class="tabs">
+        <div class="tab active" onclick="showTab('home')">🏠 Homepage</div>
+        <div class="tab" onclick="showTab('about')">About Us</div>
+        <div class="tab" onclick="showTab('gift')">G.I.F.T.</div>
+        <div class="tab" onclick="showTab('carr')">C.A.R.R.</div>
+        <div class="tab" onclick="showTab('seed')">S.E.E.D.</div>
+        <div class="tab" onclick="showTab('fuel')">F.U.E.L.</div>
+        <div class="tab" onclick="showTab('pf')">Project Financing</div>
+        <div class="tab" onclick="showTab('security')">Security & Compliance</div>
+        <div class="tab" onclick="showTab('contact')">Contact Us</div>
+        <div class="tab" onclick="showTab('resources')">Resources</div>
+        <div class="tab" onclick="showTab('privacy')">Privacy Policy</div>
+        <div class="tab" onclick="showTab('terms')">Terms & Conditions</div>
+        <div class="tab" onclick="showTab('disclosure')">Disclosure</div>
+        <div class="tab" onclick="showTab('accessibility')">Accessibility</div>
+        <div class="tab" onclick="showTab('loan')">Loan Application</div>
+    </div>
+
+    <div class="sheet-container">
+
+        <!-- ══════════════════════════════════════════
+     HOMEPAGE
+══════════════════════════════════════════ -->
+        <div id="sheet-home" class="sheet active">
+            <table>
+                <thead>
+                    <tr>
+                        <th>FIELD</th>
+                        <th class="col-url">VALUE / CONTENT</th>
+                        <th>STATUS</th>
+                        <th>NOTES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="row-label">Page URL</td>
+                        <td class="field-filled">https://phxcapsolutions.com/</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Template File</td>
+                        <td class="field-filled">index.php</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">SEO Title <span class="char-ok">(50–60 chars)</span></td>
+                        <td class="field-todo col-title">Phoenix Capital Solutions | Private Capital Programs for
+                            Accredited Investors</td>
+                        <td class="status-todo">Fill</td>
+                        <td>~75 chars — trim if needed</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Meta Description <span class="char-ok">(150–160 chars)</span></td>
+                        <td class="field-todo col-desc">Phoenix Capital Solutions offers invitation-only capital
+                            programs — C.A.R.R., S.E.E.D., F.U.E.L., and G.I.F.T. — for verified accredited investors
+                            and qualified asset holders.</td>
+                        <td class="status-todo">Fill</td>
+                        <td>Confirm with client</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Focus Keyword</td>
+                        <td class="field-todo col-kw">private capital programs accredited investors</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Secondary Keywords</td>
+                        <td class="field-todo col-kw">institutional capital solutions, hard asset monetization,
+                            invitation only investment programs</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">H1 (from theme)</td>
+                        <td class="field-filled"><span class="tag tag-h1">H1</span> Dynamic via ACF — set in WP admin
+                        </td>
+                        <td class="status-done">✓</td>
+                        <td>Suggest: "Structured Capital Programs for Qualified Investors"</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">H2s (from theme)</td>
+                        <td class="field-filled col-h">
+                            <span class="tag tag-h2">H2</span> Traditional vs. Phoenix<br>
+                            <span class="tag tag-h2">H2</span> Commercial Project Eligibility & No-Guarantee
+                            Financing<br>
+                            <span class="tag tag-h2">H2</span> How Phoenix Scales Your Portfolio<br>
+                            <span class="tag tag-h2">H2</span> Our 5-Point Project Assessment<br>
+                            <span class="tag tag-h2">H2</span> What We Don't Ask For
+                        </td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">FAQ Questions</td>
+                        <td class="field-todo">None on homepage</td>
+                        <td class="status-na">N/A</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">OG Image</td>
+                        <td class="field-todo">/assets/img/og-home.jpg <span class="tag tag-todo">CREATE</span></td>
+                        <td class="status-todo">Fill</td>
+                        <td>1200×630px recommended</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Schema Types</td>
+                        <td class="field-filled">Organization, WebSite, WebPage</td>
+                        <td class="status-todo">Implement</td>
+                        <td>Include sitelinks searchbox</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Canonical URL</td>
+                        <td class="field-filled">https://phxcapsolutions.com/</td>
+                        <td class="status-todo">Implement</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Robots</td>
+                        <td class="field-filled">index, follow</td>
+                        <td class="status-todo">Implement</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ══════════════════════════════════════════
+     ABOUT US
+══════════════════════════════════════════ -->
+        <div id="sheet-about" class="sheet">
+            <table>
+                <thead>
+                    <tr>
+                        <th>FIELD</th>
+                        <th class="col-url">VALUE / CONTENT</th>
+                        <th>STATUS</th>
+                        <th>NOTES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="row-label">Page URL</td>
+                        <td class="field-filled">https://phxcapsolutions.com/about-us/</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Template File</td>
+                        <td class="field-filled">page-about-us.php</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">SEO Title</td>
+                        <td class="field-todo col-title">About Phoenix Capital Solutions | Our Team & Mission</td>
+                        <td class="status-todo">Fill</td>
+                        <td>~51 chars ✓</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Meta Description</td>
+                        <td class="field-todo col-desc">Learn about Phoenix Capital Solutions — our mission, leadership
+                            team, and commitment to structured, compliant capital programs for accredited investors
+                            worldwide.</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Focus Keyword</td>
+                        <td class="field-todo">Phoenix Capital Solutions team</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Secondary Keywords</td>
+                        <td class="field-todo">capital solutions firm, private investment company, accredited investor
+                            programs</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">H1 (from theme)</td>
+                        <td class="field-filled"><span class="tag tag-h1">H1</span> Real-Life Strategy to Reach Your
+                            Goals</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">H2s (from theme)</td>
+                        <td class="field-filled col-h">
+                            <span class="tag tag-h2">H2</span> We Strive for Impact Across the Globe<br>
+                            <span class="tag tag-h2">H2</span> Our Staff is Extremely Qualified to Help Your Business
+                            Grow<br>
+                            <span class="tag tag-h2">H2</span> Frequently Asked Questions<br>
+                            <span class="tag tag-h2">H2</span> We Generate Results for Our Customers<br>
+                            <span class="tag tag-h2">H2</span> Ready to Explore a Program Designed for Your Goals?
+                        </td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Images + Alt Text</td>
+                        <td class="field-filled col-img">
+                            <span class="tag tag-img">IMG</span> about-hero.jpg → "Phoenix Capital Solutions Team"<br>
+                            <span class="tag tag-img">IMG</span> about-stats.jpg → "Phoenix Capital Global Reach"<br>
+                            <span class="tag tag-img">IMG</span> staff-01.jpg → "Justin Watson — Phoenix Capital
+                            Solutions"<br>
+                            <span class="tag tag-img">IMG</span> staff-05.jpg → "Lori Cruz — Phoenix Capital
+                            Solutions"<br>
+                            <span class="tag tag-img">IMG</span> Alicia Regnier.jpg → "Alicia Regnier — Client
+                            Testimonial"<br>
+                            <span class="tag tag-img">IMG</span> Marie Hibbler.jpg → "Marie Hibbler — Client
+                            Testimonial"<br>
+                            <span class="tag tag-img">IMG</span> Evan Hoffman.jpg → "Evan Hoffman — Client Testimonial"
+                        </td>
+                        <td class="status-done">✓</td>
+                        <td>More staff names needed</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">FAQ Questions</td>
+                        <td class="field-filled col-faq">
+                            <span class="tag tag-faq">FAQ</span> Who is the C.A.R.R. Program designed for?<br>
+                            <span class="tag tag-faq">FAQ</span> Is there a minimum capital or asset requirement?<br>
+                            <span class="tag tag-faq">FAQ</span> How is C.A.R.R. different from other programs?<br>
+                            <span class="tag tag-faq">FAQ</span> Can revenue be withdrawn freely?<br>
+                            <span class="tag tag-faq">FAQ</span> What project sizes qualify?<br>
+                            <span class="tag tag-faq">FAQ</span> Can international projects apply?
+                        </td>
+                        <td class="status-done">✓</td>
+                        <td><span class="tag tag-todo">Need answers for schema</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Schema Types</td>
+                        <td class="field-filled">Organization, AboutPage, FAQPage, Person (staff)</td>
+                        <td class="status-todo">Implement</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">OG Image</td>
+                        <td class="field-todo">/assets/img/og-about.jpg <span class="tag tag-todo">CREATE</span></td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ══════════════════════════════════════════
+     G.I.F.T.
+══════════════════════════════════════════ -->
+        <div id="sheet-gift" class="sheet">
+            <table>
+                <thead>
+                    <tr>
+                        <th>FIELD</th>
+                        <th class="col-url">VALUE / CONTENT</th>
+                        <th>STATUS</th>
+                        <th>NOTES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="row-label">Page URL</td>
+                        <td class="field-filled">https://phxcapsolutions.com/gift/</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Template File</td>
+                        <td class="field-filled">page-gift.php</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">SEO Title</td>
+                        <td class="field-todo col-title">G.I.F.T. Program | Grants & Investments for Future
+                            Transformation</td>
+                        <td class="status-todo">Fill</td>
+                        <td>~64 chars — trim slightly</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Meta Description</td>
+                        <td class="field-todo col-desc">The G.I.F.T. Program by Phoenix Capital Solutions is a
+                            dual-channel impact framework combining philanthropic grants and impact investments for
+                            global transformation.</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Focus Keyword</td>
+                        <td class="field-todo">impact investment program accredited investors</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Secondary Keywords</td>
+                        <td class="field-todo">philanthropic capital program, grants and investments, global impact fund
+                        </td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">H1 (from theme)</td>
+                        <td class="field-filled"><span class="tag tag-h1">H1</span> Grants and Investments for Future
+                            Transformation</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">H2s (from theme)</td>
+                        <td class="field-filled col-h">
+                            <span class="tag tag-h2">H2</span> The Capital Engine for Global Transformation<br>
+                            <span class="tag tag-h2">H2</span> The Opportunity at Scale<br>
+                            <span class="tag tag-h2">H2</span> Why Traditional Philanthropy Fails<br>
+                            <span class="tag tag-h2">H2</span> What G.I.F.T. Is — A Dual-Channel Impact Framework<br>
+                            <span class="tag tag-h2">H2</span> Integration With Phoenix Capital Programs<br>
+                            <span class="tag tag-h2">H2</span> G.I.F.T. Program Architecture<br>
+                            <span class="tag tag-h2">H2</span> Impact Measurement & Reporting — The G.I.F.T.
+                            Scorecard<br>
+                            <span class="tag tag-h2">H2</span> The G.I.F.T. Flywheel — Compounding Impact
+                            Architecture<br>
+                            <span class="tag tag-h2">H2</span> Governance Structure — The G.I.F.T. Council<br>
+                            <span class="tag tag-h2">H2</span> Eligibility & Criteria<br>
+                            <span class="tag tag-h2">H2</span> Case Study: The Education Cascade<br>
+                            <span class="tag tag-h2">H2</span> Case Study: The Renewable Energy Loop<br>
+                            <span class="tag tag-h2">H2</span> Case Study: The Bridge to Scale
+                        </td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Images + Alt Text</td>
+                        <td class="field-filled col-img">
+                            <span class="tag tag-img">IMG</span> gift-globe.jpg → "G.I.F.T. Program — Global Impact
+                            Initiative"<br>
+                            <span class="tag tag-img">IMG</span> grants-channel.png → "G.I.F.T. Grants Channel
+                            Structure"<br>
+                            <span class="tag tag-img">IMG</span> ventures-channel.jpg → "G.I.F.T. Ventures Channel —
+                            Impact Investments"<br>
+                            <span class="tag tag-img">IMG</span> gift-scorecard.jpg → "G.I.F.T. Impact Scorecard"<br>
+                            <span class="tag tag-img">IMG</span> gift-education.jpg → "G.I.F.T. Case Study — Education
+                            Cascade"<br>
+                            <span class="tag tag-img">IMG</span> gift-bridge-plans.jpg → "G.I.F.T. Case Study — Bridge
+                            to Scale"
+                        </td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">FAQ Questions</td>
+                        <td class="field-todo col-faq"><span class="tag tag-todo">No FAQs found — add if
+                                applicable</span></td>
+                        <td class="status-na">N/A</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Schema Types</td>
+                        <td class="field-filled">WebPage, Organization</td>
+                        <td class="status-todo">Implement</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">OG Image</td>
+                        <td class="field-todo">/assets/img/og-gift.jpg <span class="tag tag-todo">CREATE</span></td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ══════════════════════════════════════════
+     C.A.R.R.
+══════════════════════════════════════════ -->
+        <div id="sheet-carr" class="sheet">
+            <table>
+                <thead>
+                    <tr>
+                        <th>FIELD</th>
+                        <th class="col-url">VALUE / CONTENT</th>
+                        <th>STATUS</th>
+                        <th>NOTES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="row-label">Page URL</td>
+                        <td class="field-filled">https://phxcapsolutions.com/carr/</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Template File</td>
+                        <td class="field-filled">page-carr.php</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">SEO Title</td>
+                        <td class="field-todo col-title">C.A.R.R. Program | Hard Asset Capital Expansion — Phoenix
+                            Capital</td>
+                        <td class="status-todo">Fill</td>
+                        <td>~64 chars</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Meta Description</td>
+                        <td class="field-todo col-desc">The C.A.R.R. Program provides qualified hard asset owners with
+                            structured pathways to acquire capital, generate revenue cycles, and reinvest under strict
+                            compliance standards.</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Focus Keyword</td>
+                        <td class="field-todo">hard asset capital program accredited investors</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Secondary Keywords</td>
+                        <td class="field-todo">commodities recapitalization, asset monetization program, hard asset
+                            financing</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">H1 (from theme)</td>
+                        <td class="field-filled"><span class="tag tag-h1">H1</span> A Strategic Framework for Capital
+                            Expansion Leveraging High Value Hard Assets</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">H2s (from theme)</td>
+                        <td class="field-filled col-h">
+                            <span class="tag tag-h2">H2</span> Program Overview<br>
+                            <span class="tag tag-h2">H2</span> The C.A.R.R. Four-Step Framework<br>
+                            <span class="tag tag-h2">H2</span> C.A.R.R. Program Timeline<br>
+                            <span class="tag tag-h2">H2</span> The C.A.R.R. Capital Cycle<br>
+                            <span class="tag tag-h2">H2</span> Eligibility Requirements: C.A.R.R. Program<br>
+                            <span class="tag tag-h2">H2</span> Generalized Use Cases<br>
+                            <span class="tag tag-h2">H2</span> Frequently Asked Questions
+                        </td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Images + Alt Text</td>
+                        <td class="field-filled col-img">
+                            <span class="tag tag-img">IMG</span> carr-hero.png → "C.A.R.R. Program — Hard Asset Capital
+                            Expansion"<br>
+                            <span class="tag tag-img">IMG</span> carr-overview.png → "C.A.R.R. Program Overview —
+                            Phoenix Capital Solutions"<br>
+                            <span class="tag tag-img">IMG</span> carr-ree.png → "Rare Earth Element Mine Owners —
+                            C.A.R.R. Use Case"<br>
+                            <span class="tag tag-img">IMG</span> carr-gold.png → "Vaulted Bullion Gold Holders —
+                            C.A.R.R. Use Case"<br>
+                            <span class="tag tag-img">IMG</span> carr-diamonds.png → "Gemstone & Diamond Asset Owners —
+                            C.A.R.R. Use Case"
+                        </td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">FAQ Questions</td>
+                        <td class="field-filled col-faq">
+                            <span class="tag tag-faq">FAQ</span> Who is the C.A.R.R. Program designed for?<br>
+                            <span class="tag tag-faq">FAQ</span> Is there a minimum capital or asset requirement?<br>
+                            <span class="tag tag-faq">FAQ</span> How is C.A.R.R. different from other programs?<br>
+                            <span class="tag tag-faq">FAQ</span> Can revenue be withdrawn freely?
+                        </td>
+                        <td class="status-done">✓</td>
+                        <td><span class="tag tag-todo">Need answers for FAQPage schema</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">FAQ Answers</td>
+                        <td class="field-todo col-faq"><span class="tag tag-todo">Please fill in the answers to each FAQ
+                                above</span></td>
+                        <td class="status-todo">Fill</td>
+                        <td>Used for JSON-LD FAQPage schema</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Schema Types</td>
+                        <td class="field-filled">WebPage, FAQPage</td>
+                        <td class="status-todo">Implement</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">OG Image</td>
+                        <td class="field-todo">/assets/img/og-carr.jpg <span class="tag tag-todo">CREATE</span></td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ══════════════════════════════════════════
+     S.E.E.D.
+══════════════════════════════════════════ -->
+        <div id="sheet-seed" class="sheet">
+            <table>
+                <thead>
+                    <tr>
+                        <th>FIELD</th>
+                        <th class="col-url">VALUE / CONTENT</th>
+                        <th>STATUS</th>
+                        <th>NOTES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="row-label">Page URL</td>
+                        <td class="field-filled">https://phxcapsolutions.com/seed/</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Template File</td>
+                        <td class="field-filled">page-seed.php</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">SEO Title</td>
+                        <td class="field-todo col-title">S.E.E.D. Program | Institutional Capital Formation — Phoenix
+                            Capital</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Meta Description</td>
+                        <td class="field-todo col-desc">The S.E.E.D. Program transforms controlled liquidity into
+                            large-scale banking instruments for monetization and long-term capital expansion for
+                            qualified investors.</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Focus Keyword</td>
+                        <td class="field-todo">institutional capital formation banking instruments</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Secondary Keywords</td>
+                        <td class="field-todo">SBLC monetization, capital expansion program, banking instrument program
+                        </td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">H1 (from theme)</td>
+                        <td class="field-filled"><span class="tag tag-h1">H1</span> Institutional-Grade Capital
+                            Formation for Qualified Investors</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">H2s (from theme)</td>
+                        <td class="field-filled col-h">
+                            <span class="tag tag-h2">H2</span> Program Overview<br>
+                            <span class="tag tag-h2">H2</span> Program Mechanics<br>
+                            <span class="tag tag-h2">H2</span> Program Timeline<br>
+                            <span class="tag tag-h2">H2</span> Financial Model<br>
+                            <span class="tag tag-h2">H2</span> Eligibility Requirements<br>
+                            <span class="tag tag-h2">H2</span> Generalized Use Cases<br>
+                            <span class="tag tag-h2">H2</span> Frequently Asked Questions
+                        </td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">FAQ Questions</td>
+                        <td class="field-filled col-faq">
+                            <span class="tag tag-faq">FAQ</span> Can international clients participate?<br>
+                            <span class="tag tag-faq">FAQ</span> Are there restrictions on capital usage?<br>
+                            <span class="tag tag-faq">FAQ</span> Are funds refundable if issuance fails?<br>
+                            <span class="tag tag-faq">FAQ</span> Do clients retain ownership of the instrument?<br>
+                            <span class="tag tag-faq">FAQ</span> What is the purpose of the initial capital
+                            contribution?
+                        </td>
+                        <td class="status-done">✓</td>
+                        <td><span class="tag tag-todo">Need answers</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">FAQ Answers</td>
+                        <td class="field-todo col-faq"><span class="tag tag-todo">Please fill in the answers to each FAQ
+                                above</span></td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Schema Types</td>
+                        <td class="field-filled">WebPage, FAQPage</td>
+                        <td class="status-todo">Implement</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">OG Image</td>
+                        <td class="field-todo">/assets/img/og-seed.jpg <span class="tag tag-todo">CREATE</span></td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ══════════════════════════════════════════
+     F.U.E.L.
+══════════════════════════════════════════ -->
+        <div id="sheet-fuel" class="sheet">
+            <table>
+                <thead>
+                    <tr>
+                        <th>FIELD</th>
+                        <th class="col-url">VALUE / CONTENT</th>
+                        <th>STATUS</th>
+                        <th>NOTES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="row-label">Page URL</td>
+                        <td class="field-filled">https://phxcapsolutions.com/fuel/</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Template File</td>
+                        <td class="field-filled">page-fuel.php</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">SEO Title</td>
+                        <td class="field-todo col-title">F.U.E.L. Program | Capital Expansion for Qualified Investors —
+                            Phoenix Capital</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Meta Description</td>
+                        <td class="field-todo col-desc">The F.U.E.L. Program is a comprehensive capital expansion
+                            framework designed for qualified investors seeking structured, compliant pathways to deploy
+                            and grow capital.</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Focus Keyword</td>
+                        <td class="field-todo">capital expansion framework qualified investors</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Secondary Keywords</td>
+                        <td class="field-todo">private capital program, investor capital growth, structured investment
+                            program</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">H1 (from theme)</td>
+                        <td class="field-filled"><span class="tag tag-h1">H1</span> A Comprehensive Capital Expansion
+                            Framework for Qualified Investors</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">H2s (from theme)</td>
+                        <td class="field-filled col-h">
+                            <span class="tag tag-h2">H2</span> Program Overview<br>
+                            <span class="tag tag-h2">H2</span> Program Mechanics<br>
+                            <span class="tag tag-h2">H2</span> Program Timeline<br>
+                            <span class="tag tag-h2">H2</span> Financial Model<br>
+                            <span class="tag tag-h2">H2</span> Eligibility Requirements<br>
+                            <span class="tag tag-h2">H2</span> Generalized Use Cases<br>
+                            <span class="tag tag-h2">H2</span> Frequently Asked Questions
+                        </td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">FAQ Questions</td>
+                        <td class="field-filled col-faq">
+                            <span class="tag tag-faq">FAQ</span> Are returns or outcomes guaranteed?<br>
+                            <span class="tag tag-faq">FAQ</span> Is capital use unrestricted?<br>
+                            <span class="tag tag-faq">FAQ</span> Can I enter using assets instead of liquidity?<br>
+                            <span class="tag tag-faq">FAQ</span> How does F.U.E.L. differ from C.A.R.R. and D.I.S.C.?
+                        </td>
+                        <td class="status-done">✓</td>
+                        <td><span class="tag tag-todo">Need answers</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">FAQ Answers</td>
+                        <td class="field-todo"><span class="tag tag-todo">Please fill in answers</span></td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Schema Types</td>
+                        <td class="field-filled">WebPage, FAQPage</td>
+                        <td class="status-todo">Implement</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">OG Image</td>
+                        <td class="field-todo">/assets/img/og-fuel.jpg <span class="tag tag-todo">CREATE</span></td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ══════════════════════════════════════════
+     PROJECT FINANCING
+══════════════════════════════════════════ -->
+        <div id="sheet-pf" class="sheet">
+            <table>
+                <thead>
+                    <tr>
+                        <th>FIELD</th>
+                        <th class="col-url">VALUE / CONTENT</th>
+                        <th>STATUS</th>
+                        <th>NOTES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="row-label">Page URL</td>
+                        <td class="field-filled">https://phxcapsolutions.com/project-financing/</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Template File</td>
+                        <td class="field-filled">page-project-financing.php</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">SEO Title</td>
+                        <td class="field-todo col-title">Project Financing | Large-Scale Structured Loans — Phoenix
+                            Capital Solutions</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Meta Description</td>
+                        <td class="field-todo col-desc">Phoenix Capital Solutions provides structured project financing
+                            for large-scale ventures — retain majority equity while accessing non-dilutive capital for
+                            development projects.</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Focus Keyword</td>
+                        <td class="field-todo">structured project financing large scale</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Secondary Keywords</td>
+                        <td class="field-todo">non-dilutive project loans, commercial real estate financing, large
+                            project capital</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">H1 (from theme)</td>
+                        <td class="field-filled"><span class="tag tag-h1">H1</span> Structured Project Financing for
+                            Ambitious, Large-Scale Ventures</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Key H2s</td>
+                        <td class="field-filled col-h">
+                            <span class="tag tag-h2">H2</span> Phoenix Value Calculator<br>
+                            <span class="tag tag-h2">H2</span> Loan Structure Benefits<br>
+                            <span class="tag tag-h2">H2</span> 5 Key Underwriting Criteria<br>
+                            <span class="tag tag-h2">H2</span> Retain Majority Equity with Phoenix Capital<br>
+                            <span class="tag tag-h2">H2</span> Program Mechanics<br>
+                            <span class="tag tag-h2">H2</span> Project Types Supported<br>
+                            <span class="tag tag-h2">H2</span> Eligibility Requirements<br>
+                            <span class="tag tag-h2">H2</span> Frequently Asked Questions
+                        </td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">FAQ Questions</td>
+                        <td class="field-filled col-faq">
+                            <span class="tag tag-faq">FAQ</span> Do projects need collateral?<br>
+                            <span class="tag tag-faq">FAQ</span> Does this program guarantee funding?<br>
+                            <span class="tag tag-faq">FAQ</span> Are funds deployed upfront?<br>
+                            <span class="tag tag-faq">FAQ</span> Can international projects apply?<br>
+                            <span class="tag tag-faq">FAQ</span> What project sizes qualify?
+                        </td>
+                        <td class="status-done">✓</td>
+                        <td><span class="tag tag-todo">Need answers</span></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">FAQ Answers</td>
+                        <td class="field-todo"><span class="tag tag-todo">Please fill in answers</span></td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Schema Types</td>
+                        <td class="field-filled">WebPage, FAQPage, FinancialProduct</td>
+                        <td class="status-todo">Implement</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">OG Image</td>
+                        <td class="field-todo">/assets/img/og-project-financing.jpg <span
+                                class="tag tag-todo">CREATE</span></td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ══════════════════════════════════════════
+     SECURITY & COMPLIANCE
+══════════════════════════════════════════ -->
+        <div id="sheet-security" class="sheet">
+            <table>
+                <thead>
+                    <tr>
+                        <th>FIELD</th>
+                        <th class="col-url">VALUE / CONTENT</th>
+                        <th>STATUS</th>
+                        <th>NOTES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="row-label">Page URL</td>
+                        <td class="field-filled">https://phxcapsolutions.com/security-and-compliance/</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Template File</td>
+                        <td class="field-filled">page-security-and-compliance.php</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">SEO Title</td>
+                        <td class="field-todo col-title">Security & Compliance Framework | Phoenix Capital Solutions
+                        </td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Meta Description</td>
+                        <td class="field-todo col-desc">Phoenix Capital Solutions maintains rigorous security and
+                            compliance standards across all programs — SBLC/BG, C.A.R.R., D.I.S.C., F.U.E.L., and
+                            Project Financing.</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Focus Keyword</td>
+                        <td class="field-todo">capital program security compliance framework</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">H1 (from theme)</td>
+                        <td class="field-filled"><span class="tag tag-h1">H1</span> Security and Compliance Framework
+                        </td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">H2s (from theme)</td>
+                        <td class="field-filled col-h">
+                            <span class="tag tag-h2">H2</span> SBLC/BG Deferred Security & Compliance Framework<br>
+                            <span class="tag tag-h2">H2</span> C.A.R.R. Security & Compliance Framework<br>
+                            <span class="tag tag-h2">H2</span> D.I.S.C. Security & Risk Controls<br>
+                            <span class="tag tag-h2">H2</span> F.U.E.L. Security & Compliance Framework<br>
+                            <span class="tag tag-h2">H2</span> Project Financing Security & Compliance Framework
+                        </td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Schema Types</td>
+                        <td class="field-filled">WebPage</td>
+                        <td class="status-todo">Implement</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Robots</td>
+                        <td class="field-filled">index, follow</td>
+                        <td class="status-todo">Implement</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">OG Image</td>
+                        <td class="field-todo">/assets/img/og-security.jpg <span class="tag tag-todo">CREATE</span></td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ══════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════ -->
+        <div id="sheet-contact" class="sheet">
+            <table>
+                <thead>
+                    <tr>
+                        <th>FIELD</th>
+                        <th class="col-url">VALUE / CONTENT</th>
+                        <th>STATUS</th>
+                        <th>NOTES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="row-label">Page URL</td>
+                        <td class="field-filled">https://phxcapsolutions.com/contact-us/</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Template File</td>
+                        <td class="field-filled">page-contact-us.php</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">SEO Title</td>
+                        <td class="field-todo col-title">Contact Phoenix Capital Solutions | Get in Touch</td>
+                        <td class="status-todo">Fill</td>
+                        <td>~48 chars ✓</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Meta Description</td>
+                        <td class="field-todo col-desc">Contact Phoenix Capital Solutions to inquire about our
+                            invitation-only capital programs. Reach our team for program inquiries, compliance
+                            questions, or general information.</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Focus Keyword</td>
+                        <td class="field-todo">contact Phoenix Capital Solutions</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">H1 (from theme)</td>
+                        <td class="field-filled"><span class="tag tag-h1">H1</span> Let's connect!</td>
+                        <td class="status-done">✓</td>
+                        <td>Consider updating to include keyword</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Business Info Needed</td>
+                        <td class="field-todo col-faq">
+                            <span class="tag tag-todo">Phone number</span><br>
+                            <span class="tag tag-todo">Business address</span><br>
+                            <span class="tag tag-todo">Business hours</span><br>
+                            <span class="tag tag-todo">Email address</span>
+                        </td>
+                        <td class="status-todo">Fill</td>
+                        <td>Required for LocalBusiness schema</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Schema Types</td>
+                        <td class="field-filled">ContactPage, LocalBusiness, Organization</td>
+                        <td class="status-todo">Implement</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">OG Image</td>
+                        <td class="field-todo">/assets/img/og-contact.jpg <span class="tag tag-todo">CREATE</span></td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ══════════════════════════════════════════
+     RESOURCES
+══════════════════════════════════════════ -->
+        <div id="sheet-resources" class="sheet">
+            <table>
+                <thead>
+                    <tr>
+                        <th>FIELD</th>
+                        <th class="col-url">VALUE / CONTENT</th>
+                        <th>STATUS</th>
+                        <th>NOTES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="row-label">Page URL</td>
+                        <td class="field-filled">https://phxcapsolutions.com/resources/</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Template File</td>
+                        <td class="field-filled">page-resources.php</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">SEO Title</td>
+                        <td class="field-todo col-title">Resources & Insights | Phoenix Capital Solutions</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Meta Description</td>
+                        <td class="field-todo col-desc">Explore capital program resources, articles, and insights from
+                            Phoenix Capital Solutions — structured for accredited investors and qualified capital
+                            holders.</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Focus Keyword</td>
+                        <td class="field-todo">capital program resources insights</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Schema Types</td>
+                        <td class="field-filled">Blog, WebPage, BreadcrumbList</td>
+                        <td class="status-todo">Implement</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">OG Image</td>
+                        <td class="field-todo">/assets/img/og-resources.jpg <span class="tag tag-todo">CREATE</span>
+                        </td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ══════════════════════════════════════════
+     LEGAL PAGES (Privacy, Terms, Disclosure, Accessibility)
+══════════════════════════════════════════ -->
+        <div id="sheet-privacy" class="sheet">
+            <table>
+                <thead>
+                    <tr>
+                        <th>FIELD</th>
+                        <th class="col-url">VALUE / CONTENT</th>
+                        <th>STATUS</th>
+                        <th>NOTES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="row-label">Page URL</td>
+                        <td class="field-filled">https://phxcapsolutions.com/privacy-policy/</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">SEO Title</td>
+                        <td class="field-todo">Privacy Policy | Phoenix Capital Solutions</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Meta Description</td>
+                        <td class="field-todo">Read the Phoenix Capital Solutions privacy policy — how we collect, use,
+                            and protect your personal information.</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Robots</td>
+                        <td class="field-filled">noindex, follow</td>
+                        <td class="status-todo">Implement</td>
+                        <td>Legal pages should be noindex</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Schema Types</td>
+                        <td class="field-filled">WebPage</td>
+                        <td class="status-todo">Implement</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="sheet-terms" class="sheet">
+            <table>
+                <thead>
+                    <tr>
+                        <th>FIELD</th>
+                        <th class="col-url">VALUE / CONTENT</th>
+                        <th>STATUS</th>
+                        <th>NOTES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="row-label">Page URL</td>
+                        <td class="field-filled">https://phxcapsolutions.com/terms-and-conditions/</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">SEO Title</td>
+                        <td class="field-todo">Terms & Conditions | Phoenix Capital Solutions</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Meta Description</td>
+                        <td class="field-todo">Review the terms and conditions governing use of the Phoenix Capital
+                            Solutions website and participation in our programs.</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Robots</td>
+                        <td class="field-filled">noindex, follow</td>
+                        <td class="status-todo">Implement</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Schema Types</td>
+                        <td class="field-filled">WebPage</td>
+                        <td class="status-todo">Implement</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="sheet-disclosure" class="sheet">
+            <table>
+                <thead>
+                    <tr>
+                        <th>FIELD</th>
+                        <th class="col-url">VALUE / CONTENT</th>
+                        <th>STATUS</th>
+                        <th>NOTES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="row-label">Page URL</td>
+                        <td class="field-filled">https://phxcapsolutions.com/disclosure/</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">SEO Title</td>
+                        <td class="field-todo">Disclosure & Communications Framework | Phoenix Capital Solutions</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Meta Description</td>
+                        <td class="field-todo">Read the official disclosure and communications framework governing all
+                            Phoenix Capital Solutions programs, intermediaries, and investor communications.</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Robots</td>
+                        <td class="field-filled">noindex, follow</td>
+                        <td class="status-todo">Implement</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Schema Types</td>
+                        <td class="field-filled">WebPage</td>
+                        <td class="status-todo">Implement</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="sheet-accessibility" class="sheet">
+            <table>
+                <thead>
+                    <tr>
+                        <th>FIELD</th>
+                        <th class="col-url">VALUE / CONTENT</th>
+                        <th>STATUS</th>
+                        <th>NOTES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="row-label">Page URL</td>
+                        <td class="field-filled">https://phxcapsolutions.com/accessibility/</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">SEO Title</td>
+                        <td class="field-todo">Accessibility Statement | Phoenix Capital Solutions</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Meta Description</td>
+                        <td class="field-todo">Phoenix Capital Solutions is committed to web accessibility for all
+                            users. Read our accessibility statement and learn how to report accessibility issues.</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Robots</td>
+                        <td class="field-filled">noindex, follow</td>
+                        <td class="status-todo">Implement</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Schema Types</td>
+                        <td class="field-filled">WebPage</td>
+                        <td class="status-todo">Implement</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="sheet-loan" class="sheet">
+            <table>
+                <thead>
+                    <tr>
+                        <th>FIELD</th>
+                        <th class="col-url">VALUE / CONTENT</th>
+                        <th>STATUS</th>
+                        <th>NOTES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="row-label">Page URL</td>
+                        <td class="field-filled">https://phxcapsolutions.com/loan-application/</td>
+                        <td class="status-done">✓</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">SEO Title</td>
+                        <td class="field-todo">Loan Application | Phoenix Capital Solutions</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Meta Description</td>
+                        <td class="field-todo">Apply for structured financing through Phoenix Capital Solutions.
+                            Complete our loan application to begin the review process for qualified projects and capital
+                            programs.</td>
+                        <td class="status-todo">Fill</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Robots</td>
+                        <td class="field-filled">noindex, follow</td>
+                        <td class="status-todo">Implement</td>
+                        <td>Forms should be noindex</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Schema Types</td>
+                        <td class="field-filled">WebPage</td>
+                        <td class="status-todo">Implement</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div><!-- end sheet-container -->
+
+    <script>
+        function showTab(id) {
+            document.querySelectorAll('.sheet').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('sheet-' + id).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+
+</html>

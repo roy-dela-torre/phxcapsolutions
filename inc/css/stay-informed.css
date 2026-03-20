@@ -1,0 +1,252 @@
+/* =============================================
+   STAY INFORMED — shared across all program pages
+   Add to components.css
+   ============================================= */
+
+section.program_stay_informed {
+    background: linear-gradient(
+            rgba(10, 10, 10, 0.88) 0%,
+            rgba(10, 10, 10, 0.93) 100%
+        ),
+        url('../../assets/img/gift/poly-bg.jpg') no-repeat center center / cover;
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -200px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 800px;
+        height: 400px;
+        background: radial-gradient(ellipse, rgba(197, 155, 50, 0.08) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    /* ── Left content ──────────────────────── */
+    .stay_informed__content {
+        padding-right: 20px;
+
+        .stay_informed__label {
+            display: inline-block;
+            font-size: 0.70rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #c59b32;
+            margin-bottom: 16px;
+            position: relative;
+            padding-left: 22px;
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 12px;
+                height: 1px;
+                background-color: #c59b32;
+            }
+        }
+
+        h2 {
+            margin-bottom: 1rem;
+            line-height: 1.15;
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.60);
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+        }
+
+        .stay_informed__points {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+
+            li {
+                display: flex;
+                align-items: flex-start;
+                gap: 10px;
+                color: rgba(255, 255, 255, 0.65);
+                font-family: 'Instrument Sans', sans-serif;
+                font-size: 0.9rem;
+                line-height: 1.6;
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+                &:first-child { padding-top: 0; }
+                &:last-child { border-bottom: none; padding-bottom: 0; }
+
+                svg { flex-shrink: 0; margin-top: 3px; }
+            }
+        }
+
+        @media (max-width: 991px) {
+            padding-right: 0;
+            margin-bottom: 40px;
+        }
+    }
+
+    /* ── Form card ─────────────────────────── */
+    .stay_informed__form_card {
+        background-color: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(197, 155, 50, 0.25);
+        border-radius: 16px;
+        -webkit-border-radius: 16px;
+        padding: 36px 32px;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c59b32, transparent);
+        }
+
+        .form_card__header {
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+            .form_card__label {
+                font-size: 0.70rem;
+                font-weight: 700;
+                letter-spacing: 2.5px;
+                text-transform: uppercase;
+                color: #c59b32;
+                margin-bottom: 6px;
+            }
+
+            .form_card__note {
+                color: rgba(255, 255, 255, 0.40);
+                font-size: 0.78rem;
+                line-height: 1.6;
+                margin-bottom: 0;
+            }
+        }
+
+        /* ── CF7 form styling ────────────────── */
+        .wpcf7-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .wpcf7-form-control-wrap {
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            -webkit-border-radius: 8px;
+            padding: 14px 18px;
+            color: #ffffff;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+            outline: none;
+
+            &::placeholder {
+                color: rgba(255, 255, 255, 0.35);
+            }
+
+            &:focus {
+                border-color: rgba(197, 155, 50, 0.55);
+                background-color: rgba(255, 255, 255, 0.08);
+            }
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c59b32' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 44px;
+            cursor: pointer;
+
+            option {
+                background-color: #1a1a1a;
+                color: #ffffff;
+            }
+        }
+
+        input[type="submit"],
+        .wpcf7-submit {
+            width: 100%;
+            padding: 16px 24px;
+            background-color: #c59b32;
+            border: 1px solid #c59b32;
+            border-radius: 8px;
+            -webkit-border-radius: 8px;
+            color: #000000;
+            font-family: 'Instrument Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            letter-spacing: 0.5px;
+
+            &:hover {
+                background-color: transparent;
+                color: #c59b32;
+            }
+        }
+
+        /* Validation messages */
+        .wpcf7-not-valid-tip {
+            color: #e05555;
+            font-size: 0.78rem;
+            margin-top: 4px;
+            display: block;
+        }
+
+        .wpcf7-response-output {
+            margin-top: 16px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            border: none !important;
+        }
+
+        .wpcf7-mail-sent-ok {
+            background-color: rgba(76, 175, 80, 0.12);
+            border: 1px solid rgba(76, 175, 80, 0.3) !important;
+            color: #81c784;
+        }
+
+        .wpcf7-mail-sent-ng,
+        .wpcf7-spam-blocked {
+            background-color: rgba(224, 85, 85, 0.12);
+            border: 1px solid rgba(224, 85, 85, 0.3) !important;
+            color: #e57373;
+        }
+
+        @media (max-width: 575px) {
+            padding: 24px 20px;
+        }
+    }
+}

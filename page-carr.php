@@ -25,7 +25,7 @@ $img_path = get_template_directory_uri() . '/assets/img/carr';
                     </div>
                     <div class="col-lg-6">
                         <div class="hero_image">
-                            <img src="<?php echo $img_path; ?>/carr-hero.png" alt="C.A.R.R. Program — Hard Assets" />
+                            <img loading="lazy" src="<?php echo $img_path; ?>/carr-hero.png" alt="C.A.R.R. Program — Hard Assets" title="C.A.R.R. Program — Hard Assets" />
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@ $img_path = get_template_directory_uri() . '/assets/img/carr';
                     </div>
                     <div class="col-lg-6">
                         <div class="overview_image">
-                            <img src="<?php echo $img_path; ?>/carr-overview.png" alt="C.A.R.R. Program Overview" />
+                            <img loading="lazy" src="<?php echo $img_path; ?>/carr-overview.png" alt="C.A.R.R. Program Overview" title="C.A.R.R. Program Overview" />
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@ $img_path = get_template_directory_uri() . '/assets/img/carr';
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="section_header mb-5">
+                        <div class="section_header">
                             <h2 class="text-white">The C.A.R.R. Four-Step Framework</h2>
                         </div>
                     </div>
@@ -372,7 +372,7 @@ $img_path = get_template_directory_uri() . '/assets/img/carr';
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="section_header mb-5">
+                        <div class="section_header">
                             <h2 class="text-white text-center">Generalized Use Cases:</h2>
                         </div>
                     </div>
@@ -380,7 +380,7 @@ $img_path = get_template_directory_uri() . '/assets/img/carr';
                     <div class="col-lg-4 mb-4">
                         <div class="use_case_card">
                             <div class="use_case_image">
-                                <img src="<?php echo $img_path; ?>/carr-ree.png" alt="Rare Earth Element Mine Owners" />
+                                <img loading="lazy" src="<?php echo $img_path; ?>/carr-ree.png" alt="Rare Earth Element Mine Owners" title="Rare Earth Element Mine Owners" />
                             </div>
                             <div class="use_case_content">
                                 <h3 class="text-gold mb-3">Rare Earth Element Mine Owners</h3>
@@ -392,7 +392,7 @@ $img_path = get_template_directory_uri() . '/assets/img/carr';
                     <div class="col-lg-4 mb-4">
                         <div class="use_case_card">
                             <div class="use_case_image">
-                                <img src="<?php echo $img_path; ?>/carr-gold.png" alt="Vaulted Bullion Gold Holders" />
+                                <img loading="lazy" src="<?php echo $img_path; ?>/carr-gold.png" alt="Vaulted Bullion Gold Holders" title="Vaulted Bullion Gold Holders" />
                             </div>
                             <div class="use_case_content">
                                 <h3 class="text-gold mb-3">Vaulted Bullion Gold Holders</h3>
@@ -404,7 +404,7 @@ $img_path = get_template_directory_uri() . '/assets/img/carr';
                     <div class="col-lg-4 mb-4">
                         <div class="use_case_card">
                             <div class="use_case_image">
-                                <img src="<?php echo $img_path; ?>/carr-diamonds.png" alt="Gemstone & Diamond Asset Owners" />
+                                <img loading="lazy" src="<?php echo $img_path; ?>/carr-diamonds.png" alt="Gemstone & Diamond Asset Owners" title="Gemstone & Diamond Asset Owners" />
                             </div>
                             <div class="use_case_content">
                                 <h3 class="text-gold mb-3">Gemstone & Diamond Asset Owners</h3>
@@ -425,7 +425,7 @@ $img_path = get_template_directory_uri() . '/assets/img/carr';
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section_header text-center mb-5">
-                            <h2 class="text-white">Intake Forms</h2>
+                            <h2 class="text-white mb-0">Intake Forms</h2>
                         </div>
                     </div>
                     <div class="col-lg-12">
@@ -509,17 +509,19 @@ $img_path = get_template_directory_uri() . '/assets/img/carr';
         </div>
     </section>
 
-    <!-- ========== DISCLOSURE ========== -->
-    <section class="carr_disclosure">
+    <!-- ========== DISCLOSURE NOTICE ========== -->
+    <section class="carr_disclosure_cta">
         <div class="wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <p class="disclosure_label">Program Disclosure</p>
-                        <p class="disclosure_text mb-0">The C.A.R.R. Program is reserved exclusively for qualified participants who meet all compliance and liquidity requirements. All timelines, revenue cycles, and outcomes depend on independent institutional processes. Phoenix Capital Solutions does not guarantee returns or financial performance. All information is provided for educational purposes only and does not constitute financial or legal advice.</p>
+                        <p class="disclosure_label text-white mb-3">Program Disclosures & Legal Notices</p>
+                        <a href="/disclosure/#disclosure-carr" class="btn_gold">View C.A.R.R. Disclosure Statement</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+
 <?php get_footer(); ?>

@@ -1,0 +1,224 @@
+/* =============================================
+   INTERNAL PAGE LAYOUT — internal_page.css
+   Shared by: page.php, page-thank-you.php, 404.php
+   ============================================= */
+
+/* ── Full-page wrapper ── */
+.internal_page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 20px;
+    background:
+        radial-gradient(ellipse at 20% 30%, rgba(197, 155, 50, 0.10) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 70%, rgba(197, 155, 50, 0.06) 0%, transparent 55%),
+        linear-gradient(160deg, #0f0f10 0%, #1b1c1d 50%, #111213 100%);
+
+    .wrapper {
+        width: 100%;
+    }
+}
+
+/* ── Centered card ── */
+.internal_page_box {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 64px 72px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.015) 100%);
+    border: 1px solid rgba(197, 155, 50, 0.25);
+    border-radius: 12px;
+    box-shadow:
+        0 0 0 1px rgba(197, 155, 50, 0.08),
+        0 24px 80px rgba(0, 0, 0, 0.55),
+        0 4px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+
+    /* Gold corner accent */
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 180px;
+        height: 3px;
+        background: linear-gradient(90deg, #c59b32 0%, transparent 100%);
+        border-radius: 12px 0 0 0;
+    }
+}
+
+/* ── Label above title ── */
+.internal_label {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c59b32;
+    margin-bottom: 20px;
+    padding-left: 22px;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 14px;
+        height: 1px;
+        background: #c59b32;
+    }
+}
+
+/* ── Page heading ── */
+.internal_title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+}
+
+/* ── Body content wrapper ── */
+.internal_content {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+
+    p {
+        margin-bottom: 1rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    h2 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin: 2rem 0 0.75rem;
+    }
+
+    h3 {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.85);
+        margin: 1.5rem 0 0.5rem;
+    }
+
+    a {
+        color: #c59b32;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+
+        &:hover {
+            color: #d4b84a;
+        }
+    }
+
+    ul,
+    ol {
+        color: rgba(255, 255, 255, 0.6);
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+    }
+}
+
+/* ── Divider line ── */
+.internal_divider {
+    width: 48px;
+    height: 2px;
+    background: linear-gradient(90deg, #c59b32, transparent);
+    margin-bottom: 32px;
+}
+
+/* ── CTA button ── */
+.btn_return_home {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #c59b32 0%, #a07820 100%);
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    box-shadow: 0 4px 20px rgba(197, 155, 50, 0.3);
+
+    svg {
+        transition: transform 0.2s ease;
+        flex-shrink: 0;
+    }
+
+    &:hover {
+        background: linear-gradient(135deg, #d4b84a 0%, #c59b32 100%);
+        box-shadow: 0 6px 28px rgba(197, 155, 50, 0.45);
+        transform: translateY(-2px);
+        color: #ffffff;
+
+        svg {
+            transform: translateX(-4px);
+        }
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+/* ── 404 status number ── */
+.internal_status {
+    font-size: clamp(5rem, 15vw, 9rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, #c59b32 0%, rgba(197, 155, 50, 0.3) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .internal_page {
+        padding: 80px 16px;
+        align-items: flex-start;
+    }
+
+    .internal_page_box {
+        padding: 40px 28px;
+    }
+
+    .internal_title {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .internal_page_box {
+        padding: 32px 20px;
+        border-radius: 8px;
+    }
+
+    .btn_return_home {
+        width: 100%;
+        justify-content: center;
+    }
+}

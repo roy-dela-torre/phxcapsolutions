@@ -1,15 +1,28 @@
-<?php get_header();
-//Template Name: Template Name
+<?php
+/*
+Template Name: Default Page
+*/
+get_header();
 ?>
-<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <h1 class="entry-title"><?php the_title(); ?></h1>
-            <div class="entry-content">
-                <?php the_content(); ?>
-            </div>
-        </article>
-    <?php endwhile;
-else : ?>
-    <h1><?php esc_html_e('Page not found', 'template'); ?></h1>
-<?php endif; ?>
+
+<main class="internal_page">
+    <div class="wrapper">
+        <div class="internal_page_box">
+
+            <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+
+                <span class="internal_label">Phoenix Capital Solutions</span>
+                <h1 class="internal_title"><?php the_title(); ?></h1>
+                <div class="internal_divider"></div>
+
+                <div class="internal_content">
+                    <?php the_content(); ?>
+                </div>
+
+            <?php endwhile; endif; ?>
+
+        </div>
+    </div>
+</main>
+
 <?php get_footer(); ?>

@@ -14,7 +14,7 @@ $img_path = get_template_directory_uri() . '/assets/img/contact_us';
                 <div class="col-lg-4">
                     <div class="contact_left pe-lg-4">
                         <div class="contact_image">
-                            <img src="<?php echo $img_path; ?>/contact-team.jpg" alt="Phoenix Capital Solutions Team" />
+                            <img loading="lazy" src="<?php echo $img_path; ?>/contact-team.jpg" alt="Phoenix Capital Solutions Team" title="Phoenix Capital Solutions Team" />
                         </div>
                         <div class="contact_hours">
                             <h3 class="text-white mb-3">Operating Hours</h3>

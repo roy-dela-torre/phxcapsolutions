@@ -1,18 +1,27 @@
-<?= get_header();
-?>
+<?php get_header(); ?>
 
-<section class="page_not_found">
+<main class="internal_page">
     <div class="wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xl-6">
-                    <div class="content flex-column align-items-center">
-                        <h1 class="text-center mb-4">Page not found</h1>
-                        <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, corporis.</p>
-                        <a href="<?= get_home_url(); ?>" target="_blank" rel="noopener noreferrer" class="yellow_btn">Go Back to Homepage</a>
-                    </div>
-                </div>
+        <div class="internal_page_box">
+
+            <span class="internal_status">404</span>
+            <span class="internal_label">Page Not Found</span>
+            <h1 class="internal_title">This Page Doesn't Exist</h1>
+            <div class="internal_divider"></div>
+
+            <div class="internal_content">
+                <p>The page you are looking for may have been moved, removed, or the URL may be incorrect. Please check the address or return to our homepage.</p>
             </div>
+
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="btn_return_home">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 12L6 8l4-4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Return to Homepage
+            </a>
+
         </div>
     </div>
-</section>
+</main>
+
+<?php get_footer(); ?>

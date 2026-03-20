@@ -134,8 +134,8 @@ $global_apply_url  = get_field('global_apply_url')  ?: '/contact/';
                                 <!-- Image -->
                                 <?php if (!empty($offering['image'])) : ?>
                                     <div class="offering_image">
-                                        <img src="<?php echo esc_url($offering['image']['url']); ?>"
-                                             alt="<?php echo esc_attr($offering['title']); ?>" />
+                                        <img loading="lazy" src="<?php echo esc_url($offering['image']['url']); ?>"
+                                             alt="<?php echo esc_attr($offering['title']); ?>" title="<?php echo esc_attr($offering['title']); ?>" />
                                     </div>
                                 <?php endif; ?>
 
@@ -244,7 +244,7 @@ $global_apply_url  = get_field('global_apply_url')  ?: '/contact/';
                             <div class="offering_card">
 
                                 <div class="offering_image">
-                                    <img src="<?php echo $img_path . '/' . $card['img']; ?>" alt="<?php echo strip_tags($card['title']); ?>" />
+                                    <img loading="lazy" src="<?php echo $img_path . '/' . $card['img']; ?>" alt="<?php echo strip_tags($card['title']); ?>" title="<?php echo strip_tags($card['title']); ?>" />
                                 </div>
 
                                 <div class="offering_header">

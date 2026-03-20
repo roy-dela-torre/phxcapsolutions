@@ -33,7 +33,7 @@ $theme_uri = get_template_directory_uri();
             <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="<?= get_home_url(); ?>">
-                        <img src="<?php echo esc_url($theme_uri . '/assets/img/global/logo.png'); ?>" alt="Phoenix Capital Solutions Logo" title="Phoenix Capital Solutions Logo">
+                        <img loading="lazy" src="<?php echo esc_url($theme_uri . '/assets/img/global/logo.png'); ?>" alt="Phoenix Capital Solutions Logo" title="Phoenix Capital Solutions Logo">
                     </a>
                     <button id="primary-nav-toggle-btn" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,37 +42,68 @@ $theme_uri = get_template_directory_uri();
                     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                         <?php
                         wp_nav_menu(array(
-                            'theme_location' => 'primary', // Use the registered location
-                            'menu_class'     => 'navbar-nav', // The UL class
+                            'theme_location' => 'primary',
+                            'menu_class'     => 'navbar-nav',
                             'container'      => false,
                             'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
                             'walker'         => new class extends Walker_Nav_Menu {
+
+                                // Opens a sub-menu — adds Bootstrap dropdown-menu class
+                                function start_lvl(&$output, $depth = 0, $args = null)
+                                {
+                                    $output .= '<ul class="sub-menu dropdown-menu">';
+                                }
+
+                                // Closes a sub-menu
+                                function end_lvl(&$output, $depth = 0, $args = null)
+                                {
+                                    $output .= '</ul>';
+                                }
+
                                 function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
                                 {
 
-                                    if ($item->title == 'Contact Us') {
-                                        return;
+                                    $has_children = in_array('menu-item-has-children', (array) $item->classes);
+
+                                    // ── Build <li> classes ──
+                                    $classes   = empty($item->classes) ? array() : (array) $item->classes;
+                                    $classes[] = 'nav-item';
+                                    if ($has_children) {
+                                        $classes[] = 'dropdown';
                                     }
-                                    $classes = empty($item->classes) ? array() : (array) $item->classes;
-                                    $classes[] = 'nav-item'; // Bootstrap LI class
 
                                     $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args, $depth));
                                     $class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
 
                                     $output .= '<li' . $class_names . '>';
 
-                                    $atts = array();
+                                    // ── Build <a> attributes ──
+                                    $atts           = array();
                                     $atts['title']  = ! empty($item->attr_title) ? $item->attr_title : '';
                                     $atts['target'] = ! empty($item->target)     ? $item->target     : '';
                                     $atts['rel']    = ! empty($item->xfn)        ? $item->xfn        : '';
                                     $atts['href']   = ! empty($item->url)        ? $item->url        : '';
-                                    $atts['class']  = 'nav-link'; // Bootstrap A class
+
+                                    if ($has_children && $depth === 0) {
+                                        // Parent item — Bootstrap dropdown trigger
+                                        $atts['class']          = 'nav-link dropdown-toggle';
+                                        $atts['data-bs-toggle'] = 'dropdown';
+                                        $atts['role']           = 'button';
+                                        $atts['aria-expanded']  = 'false';
+                                    } elseif ($depth > 0) {
+                                        // Child item inside dropdown
+                                        $atts['class'] = 'dropdown-item';
+                                    } else {
+                                        // Regular top-level item
+                                        $atts['class'] = 'nav-link';
+                                    }
 
                                     $atts = apply_filters('nav_menu_link_attributes', $atts, $item, $args, $depth);
+
                                     $attributes = '';
                                     foreach ($atts as $attr => $value) {
                                         if (! empty($value)) {
-                                            $value = ('href' === $attr) ? esc_url($value) : esc_attr($value);
+                                            $value       = ('href' === $attr) ? esc_url($value) : esc_attr($value);
                                             $attributes .= ' ' . $attr . '="' . $value . '"';
                                         }
                                     }
@@ -80,13 +111,12 @@ $theme_uri = get_template_directory_uri();
                                     $title = apply_filters('the_title', $item->title, $item->ID);
                                     $title = apply_filters('nav_menu_item_title', $title, $item, $args, $depth);
 
-                                    // Normalize $args to safely support both object and array forms.
                                     $before      = is_object($args) ? ($args->before ?? '')      : (is_array($args) && isset($args['before']) ? $args['before'] : '');
                                     $after       = is_object($args) ? ($args->after ?? '')       : (is_array($args) && isset($args['after']) ? $args['after'] : '');
                                     $link_before = is_object($args) ? ($args->link_before ?? '') : (is_array($args) && isset($args['link_before']) ? $args['link_before'] : '');
                                     $link_after  = is_object($args) ? ($args->link_after ?? '')  : (is_array($args) && isset($args['link_after']) ? $args['link_after'] : '');
 
-                                    $item_output = $before;
+                                    $item_output  = $before;
                                     $item_output .= '<a' . $attributes . '>';
                                     $item_output .= $link_before . $title . $link_after;
                                     $item_output .= '</a>';
@@ -94,6 +124,7 @@ $theme_uri = get_template_directory_uri();
 
                                     $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
                                 }
+
                                 function end_el(&$output, $item, $depth = 0, $args = null)
                                 {
                                     $output .= "</li>\n";
@@ -102,7 +133,7 @@ $theme_uri = get_template_directory_uri();
                         ));
                         ?>
                     </div>
-                    <a href="<?= get_home_url() ?>/contact-us/" target="_blank" rel="noopener noreferrer" class="contact_us yellow_btn">Contact Us</a>
+                    <!-- <a href="<?//= get_home_url() ?>/contact-us/" target="_blank" rel="noopener noreferrer" class="contact_us yellow_btn">Contact Us</a> -->
                 </div>
             </nav>
         </div>

@@ -263,6 +263,15 @@ $img_path = get_template_directory_uri() . '/assets/img/security';
         </div>
     </section>
 
+    <!-- ========== STAY INFORMED ========== -->
+    <?php
+    get_template_part('template/components/stay-informed', null, [
+        'form_id'       => '1074130',
+        'program_name'  => 'Phoenix Capital Solutions',
+        'section_class' => 'security_stay_informed',
+    ]);
+    ?>
+
 </main>
 
 <?php get_footer(); ?>
